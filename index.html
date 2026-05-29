@@ -413,17 +413,15 @@
       <div class="about-grid">
         <div class="about-text">
           <h2>Информация к прочтению.</h2>
-          <p>Продаётся самоблагоустроенный дом площадью 100 м².
-               
-			   В минуте ходьбы — живописный берег реки Енисей, а также всё, что нужно для комфортной жизни: магазины, детский сад, школа, тренажёрный зал, пункты выдачи, почта и больница.
-               
-			   Вокруг — доброжелательные и порядочные соседи. Новая дорога и современное уличное освещение довершают образ идеального места для спокойной и удобной жизни.</p>
+          <p>Продаётся полностью благоустроенный дом площадью 100 м².</p>
+          <p>В минуте ходьбы — живописный берег реки Енисей, а также всё, что нужно для комфортной жизни: магазины, детский сад, школа, тренажёрный зал, пункты выдачи, почта и больница.</p>
+          <p>Вокруг — доброжелательные и порядочные соседи. Новая дорога и современное уличное освещение довершают образ идеального места для спокойной и удобной жизни.</p>
           <div class="about-features">
             <span class="feature-item">Дом 100 м²</span>
             <span class="feature-item">Территория 6 соток</span>
             <span class="feature-item">2 гаража</span>
-			<span class="feature-item">Баня</span>
-			<span class="feature-item">Над гаражом жилая комната</span>
+            <span class="feature-item">Баня</span>
+            <span class="feature-item">Над гаражом жилая комната</span>
           </div>
         </div>
         <div class="about-image">
@@ -435,18 +433,18 @@
     <div id="gallery" class="tab-content">
       <!-- Подразделы галереи -->
       <div class="gallery-subtabs" id="gallerySubtabs">
-  <button class="subtab-btn active" data-subtab="hall">Зал</button>
-  <button class="subtab-btn" data-subtab="room1">Комната 1</button>
-  <button class="subtab-btn" data-subtab="room2">Комната 2</button>
-  <button class="subtab-btn" data-subtab="room3">Комната 3</button>
-  <button class="subtab-btn" data-subtab="kitchen">Кухня</button>
-  <button class="subtab-btn" data-subtab="bathroom">Ванная комната</button>
-  <button class="subtab-btn" data-subtab="warm_hall">Тёплые сенки</button>
-  <button class="subtab-btn" data-subtab="garage1">Гараж 1</button>
-  <button class="subtab-btn" data-subtab="garage2">Гараж 2</button>
-  <button class="subtab-btn" data-subtab="banya">Баня</button>
-  <button class="subtab-btn" data-subtab="living_garage">Жилая комната над гаражом 1</button>
-</div>
+        <button class="subtab-btn active" data-subtab="hall">Зал</button>
+        <button class="subtab-btn" data-subtab="room1">Комната 1</button>
+        <button class="subtab-btn" data-subtab="room2">Комната 2</button>
+        <button class="subtab-btn" data-subtab="room3">Комната 3</button>
+        <button class="subtab-btn" data-subtab="kitchen">Кухня</button>
+        <button class="subtab-btn" data-subtab="bathroom">Ванная комната</button>
+        <button class="subtab-btn" data-subtab="warm_hall">Тёплые сенки</button>
+        <button class="subtab-btn" data-subtab="garage1">Гараж 1</button>
+        <button class="subtab-btn" data-subtab="garage2">Гараж 2</button>
+        <button class="subtab-btn" data-subtab="banya">Баня</button>
+        <button class="subtab-btn" data-subtab="living_garage">Жилая комната над гаражом 1</button>
+      </div>
       <!-- Галерея с фото (контент меняется) -->
       <div class="gallery-grid" id="galleryGrid"></div>
     </div>
@@ -457,14 +455,16 @@
           <h2>Свяжитесь с нами</h2>
           <div class="contact-detail"><span class="gold-icon">📍</span> г. Кызыл, ул. Набережная д. 74</div>
           <div class="contact-detail">
-  <span class="gold-icon">📞</span>
-  <a href="tel:+79966090812" style="color: #D4AF37; text-decoration: none; font-weight: 400;">
-    +7-996-609-08-12
-  </a>
-</div>
+            <span class="gold-icon">📞</span>
+            <a href="tel:+79966090812" style="color: #D4AF37; text-decoration: none; font-weight: 400;">
+              +7-996-609-08-12
+            </a>
+          </div>
           <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
         </div>
-        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa562effe5c9328ee4a45e8c59fd6e93eeef96d9aa70dfe0c8fb1187983cea839&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
+        <div style="flex: 1 1 280px; border-radius: 2rem; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.7);">
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa562effe5c9328ee4a45e8c59fd6e93eeef96d9aa70dfe0c8fb1187983cea839&amp;source=constructor" width="100%" height="400" frameborder="0" style="border:0;"></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -508,74 +508,74 @@
 
       // --- Галерея: подразделы и изображения ---
       const galleryData = {
-  hall: {
-    title: 'Зал',
-    photos: [
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  room1: {
-    title: 'Комната 1',
-    photos: [
-      'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  room2: {
-    title: 'Комната 2',
-    photos: [
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  room3: {
-    title: 'Комната 3',
-    photos: [
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  kitchen: {
-    title: 'Кухня',
-    photos: [
-      'https://images.unsplash.com/photo-1604709177225-055f99402ea3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  bathroom: {
-    title: 'Ванная комната',
-    photos: [
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  warm_hall: {
-    title: 'Тёплые сенки',
-    photos: [
-      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  garage1: {
-    title: 'Гараж 1',
-    photos: [
-      'https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  garage2: {
-    title: 'Гараж 2',
-    photos: [
-      'https://images.unsplash.com/photo-1600566753086-00f18f6b0050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  banya: {
-    title: 'Баня',
-    photos: [
-      'https://images.unsplash.com/photo-1533044309907-0fa3413da946?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  },
-  living_garage: {
-    title: 'Жилая комната над гаражом 1',
-    photos: [
-      'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-    ]
-  }
-};
+        hall: {
+          title: 'Зал',
+          photos: [
+            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        room1: {
+          title: 'Комната 1',
+          photos: [
+            'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        room2: {
+          title: 'Комната 2',
+          photos: [
+            'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        room3: {
+          title: 'Комната 3',
+          photos: [
+            'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        kitchen: {
+          title: 'Кухня',
+          photos: [
+            'https://images.unsplash.com/photo-1604709177225-055f99402ea3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        bathroom: {
+          title: 'Ванная комната',
+          photos: [
+            'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        warm_hall: {
+          title: 'Тёплые сенки',
+          photos: [
+            'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        garage1: {
+          title: 'Гараж 1',
+          photos: [
+            'https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        garage2: {
+          title: 'Гараж 2',
+          photos: [
+            'https://images.unsplash.com/photo-1600566753086-00f18f6b0050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        banya: {
+          title: 'Баня',
+          photos: [
+            'https://images.unsplash.com/photo-1533044309907-0fa3413da946?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        living_garage: {
+          title: 'Жилая комната над гаражом 1',
+          photos: [
+            'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        }
+      };
 
       const subtabButtons = document.querySelectorAll('.subtab-btn');
       const galleryGrid = document.getElementById('galleryGrid');
@@ -610,9 +610,9 @@
         });
       });
 
-      // Инициализация: показать первый подраздел "Гостиная"
+      // Инициализация: показать первый подраздел "Зал"
       if (subtabButtons.length > 0) {
-        setActiveSubtab('living');
+        setActiveSubtab('hall');
       }
 
       // Закрытие мобильного меню при клике вне него (простая логика)
