@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Villa Éclat — Роскошная резиденция</title>
+  <!-- Премиальные шрифты: Playfair Display для заголовков, Montserrat для текста -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      /* Завлекательный фон: фотография роскошного особняка с глубоким затемнением */
+      background-image: 
+        linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(10,10,10,0.7) 100%),
+        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1.5rem 1rem 3rem;
+      backdrop-filter: blur(1px);
+    }
+
+    /* Роскошный золотой акцент */
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F3E1A4;
+      --dark-bg: rgba(10, 10, 10, 0.8);
+      --glass-bg: rgba(20, 20, 20, 0.65);
+      --glass-border: rgba(212, 175, 55, 0.25);
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 1200px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 2.5rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.15) inset;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    /* Шапка с названием */
+    .site-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      text-shadow: 0 0 30px rgba(212,175,55,0.4), 0 5px 15px rgba(0,0,0,0.6);
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+    .site-subtitle {
+      text-align: center;
+      font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #b0b0b0;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Навигация (три вкладки) */
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(212,175,55,0.4);
+      padding-bottom: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: #ccc;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      padding: 0.7rem 2rem;
+      border-radius: 3rem;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(4px);
+    }
+    .nav-btn:hover {
+      color: #fff;
+      border-color: var(--gold);
+      background: rgba(212,175,55,0.1);
+      box-shadow: 0 0 20px rgba(212,175,55,0.2);
+    }
+    .nav-btn.active {
+      background: var(--gold);
+      color: #0a0a0a;
+      border-color: var(--gold);
+      box-shadow: 0 0 30px rgba(212,175,55,0.5);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    /* Секции контента */
+    .tab-content {
+      display: none;
+      animation: fadeSlide 0.5s ease;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Стили для страницы "О доме" */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1 1 300px;
+    }
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+    .about-text p {
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      color: #d0d0d0;
+    }
+    .about-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .feature-item {
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 1.2rem;
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--gold-light);
+      backdrop-filter: blur(5px);
+    }
+    .about-image {
+      flex: 1 1 280px;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 1px rgba(212,175,55,0.2);
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    /* Галерея — подразделы */
+    .gallery-subtabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .subtab-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ccc;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      background: rgba(20,20,20,0.5);
+      backdrop-filter: blur(4px);
+    }
+    .subtab-btn:hover {
+      border-color: var(--gold);
+      color: #fff;
+    }
+    .subtab-btn.active {
+      background: var(--gold);
+      color: #0a0a0a;
+      border-color: var(--gold);
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(212,175,55,0.4);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-card {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.7);
+      transition: transform 0.4s ease, box-shadow 0.4s;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #111;
+    }
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px rgba(212,175,55,0.25);
+      border-color: var(--gold);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-caption {
+      padding: 0.7rem 1rem;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+      background: rgba(0,0,0,0.7);
+    }
+
+    /* Контакты */
+    .contacts-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+    .contact-info {
+      flex: 1 1 260px;
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 2;
+    }
+    .contact-info h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.8rem;
+    }
+    .gold-icon {
+      color: var(--gold);
+      font-size: 1.4rem;
+    }
+    .map-placeholder {
+      flex: 1 1 280px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 2rem;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      font-style: italic;
+      color: #aaa;
+      background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+    }
+
+    /* Бургер-меню (мобильная версия) */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      z-index: 20;
+    }
+    .burger span {
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .mobile-nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      body {
+        padding: 0.8rem 0.5rem 2rem;
+      }
+      .main-container {
+        padding: 1.8rem 1.2rem;
+        border-radius: 2rem;
+      }
+      .nav-tabs {
+        gap: 0.5rem;
+      }
+      .nav-btn {
+        font-size: 1rem;
+        padding: 0.5rem 1.2rem;
+      }
+      .burger {
+        display: flex;
+      }
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.3rem;
+        margin-top: 1rem;
+      }
+      .mobile-nav.open {
+        display: flex;
+      }
+      .nav-tabs.desktop-nav {
+        display: none;
+      }
+      .nav-tabs.mobile-nav .nav-btn {
+        width: 100%;
+        text-align: center;
+      }
+      .about-grid {
+        flex-direction: column;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-nav {
+        display: none;
+      }
+      .desktop-nav {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div>
+      <h1 class="site-title">VILLA ÉCLAT</h1>
+      <p class="site-subtitle">Искусство жить вне времени</p>
+    </div>
+
+    <!-- Бургер-кнопка (видна на мобильных) -->
+    <button class="burger" id="burgerBtn" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Навигация: три вкладки (десктоп) -->
+    <div class="nav-tabs desktop-nav" id="desktopNav">
+      <button class="nav-btn active" data-tab="about">О Доме</button>
+      <button class="nav-btn" data-tab="gallery">Галерея</button>
+      <button class="nav-btn" data-tab="contacts">Контакты</button>
+    </div>
+    <!-- Навигация мобильная -->
+    <div class="nav-tabs mobile-nav" id="mobileNav">
+      <button class="nav-btn active" data-tab="about">О Доме</button>
+      <button class="nav-btn" data-tab="gallery">Галерея</button>
+      <button class="nav-btn" data-tab="contacts">Контакты</button>
+    </div>
+
+    <!-- Контент вкладок -->
+    <div id="about" class="tab-content active">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Резиденция, где сбываются мечты</h2>
+          <p>Villa Éclat — это архитектурный шедевр на побережье, объединивший благородный мрамор, ценные породы дерева и панорамные виды. Каждая деталь интерьера создана для ценителей безупречного стиля.</p>
+          <p>Просторные гостиные с каминами, спальни с террасами, спа-зона и бесконечный бассейн — здесь роскошь становится повседневностью.</p>
+          <div class="about-features">
+            <span class="feature-item">🏛 1200 м²</span>
+            <span class="feature-item">🛏 6 спален</span>
+            <span class="feature-item">🌊 Вид на океан</span>
+            <span class="feature-item">🍷 Винный погреб</span>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер виллы">
+        </div>
+      </div>
+    </div>
+
+    <div id="gallery" class="tab-content">
+      <!-- Подразделы галереи -->
+      <div class="gallery-subtabs" id="gallerySubtabs">
+        <button class="subtab-btn active" data-subtab="living">Гостиная</button>
+        <button class="subtab-btn" data-subtab="bedroom">Спальня</button>
+        <button class="subtab-btn" data-subtab="bath">Ванная</button>
+        <button class="subtab-btn" data-subtab="terrace">Терраса</button>
+      </div>
+      <!-- Галерея с фото (контент меняется) -->
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+
+    <div id="contacts" class="tab-content">
+      <div class="contacts-wrapper">
+        <div class="contact-info">
+          <h2>Свяжитесь с нами</h2>
+          <div class="contact-detail"><span class="gold-icon">📍</span> Лазурный берег, Avenue de la Prestige, 78</div>
+          <div class="contact-detail"><span class="gold-icon">📞</span> +33 6 12 34 56 78</div>
+          <div class="contact-detail"><span class="gold-icon">✉️</span> welcome@villa-eclat.fr</div>
+          <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
+        </div>
+        <div class="map-placeholder" title="Расположение виллы"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // --- Переключение главных вкладок (О доме / Галерея / Контакты) ---
+      const tabButtons = document.querySelectorAll('.nav-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      const desktopNav = document.getElementById('desktopNav');
+      const mobileNav = document.getElementById('mobileNav');
+      const burgerBtn = document.getElementById('burgerBtn');
+
+      // Синхронизируем активные классы на обеих панелях
+      function setActiveMainTab(tabId) {
+        // Обновить кнопки в обеих навигациях
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.tab === tabId) btn.classList.add('active');
+        });
+        // Показать нужный контент
+        tabContents.forEach(tc => tc.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+
+        // Закрыть мобильное меню после выбора
+        mobileNav.classList.remove('open');
+      }
+
+      // Обработчики на все кнопки главных вкладок
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const tabId = e.currentTarget.dataset.tab;
+          setActiveMainTab(tabId);
+        });
+      });
+
+      // Бургер-меню
+      burgerBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('open');
+      });
+
+      // --- Галерея: подразделы и изображения ---
+      const galleryData = {
+        living: {
+          title: 'Гостиная',
+          photos: [
+            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        bedroom: {
+          title: 'Спальня',
+          photos: [
+            'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        bath: {
+          title: 'Ванная комната',
+          photos: [
+            'https://images.unsplash.com/photo-1604709177225-055f99402ea3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        },
+        terrace: {
+          title: 'Терраса',
+          photos: [
+            'https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600566753086-00f18f6b0050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1533044309907-0fa3413da946?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ]
+        }
+      };
+
+      const subtabButtons = document.querySelectorAll('.subtab-btn');
+      const galleryGrid = document.getElementById('galleryGrid');
+
+      function renderGallery(subtabKey) {
+        const data = galleryData[subtabKey];
+        if (!data) return;
+        let html = '';
+        data.photos.forEach((src, idx) => {
+          html += `
+            <div class="gallery-card">
+              <img src="${src}" alt="${data.title} фото ${idx+1}" loading="lazy">
+              <div class="gallery-caption">${data.title} • деталь ${idx+1}</div>
+            </div>
+          `;
+        });
+        galleryGrid.innerHTML = html;
+      }
+
+      // Установить активный подраздел и отрисовать
+      function setActiveSubtab(subtabKey) {
+        subtabButtons.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.subtab === subtabKey) btn.classList.add('active');
+        });
+        renderGallery(subtabKey);
+      }
+
+      subtabButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          setActiveSubtab(e.currentTarget.dataset.subtab);
+        });
+      });
+
+      // Инициализация: показать первый подраздел "Гостиная"
+      if (subtabButtons.length > 0) {
+        setActiveSubtab('living');
+      }
+
+      // Закрытие мобильного меню при клике вне него (простая логика)
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && !burgerBtn.contains(e.target)) {
+          mobileNav.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
