@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Продаётся брусовой дом</title>
-  <!-- Премиальные шрифты: Playfair Display для заголовков, Montserrat для текста -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +19,6 @@
       background: #0a0a0a;
       color: #e0e0e0;
       min-height: 100vh;
-      /* Завлекательный фон: фотография роскошного особняка с глубоким затемнением */
       background-image: 
         linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(10,10,10,0.7) 100%),
         url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
@@ -36,7 +34,6 @@
       backdrop-filter: blur(1px);
     }
 
-    /* Роскошный золотой акцент */
     :root {
       --gold: #D4AF37;
       --gold-light: #F3E1A4;
@@ -61,29 +58,30 @@
       margin-top: 1rem;
     }
 
-    /* Шапка с названием */
     .site-title {
       text-align: center;
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
       letter-spacing: 0.08em;
       color: var(--gold-light);
       text-shadow: 0 0 30px rgba(212,175,55,0.4), 0 5px 15px rgba(0,0,0,0.6);
       line-height: 1.2;
       margin-bottom: 0.25rem;
+      word-break: break-word;
+      hyphens: auto;
     }
     .site-subtitle {
       text-align: center;
       font-weight: 300;
-      font-size: 1rem;
+      font-size: 0.9rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: #b0b0b0;
       margin-bottom: 0.5rem;
     }
 
-    /* Навигация (три вкладки) */
+    /* Навигация — общие стили */
     .nav-tabs {
       display: flex;
       justify-content: center;
@@ -124,7 +122,7 @@
       letter-spacing: 0.1em;
     }
 
-    /* Секции контента */
+    /* Контент вкладок */
     .tab-content {
       display: none;
       animation: fadeSlide 0.5s ease;
@@ -137,7 +135,6 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Стили для страницы "О доме" */
     .about-grid {
       display: flex;
       flex-wrap: wrap;
@@ -149,7 +146,7 @@
     }
     .about-text h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       color: var(--gold);
       margin-bottom: 1.2rem;
       font-weight: 600;
@@ -170,7 +167,7 @@
       background: rgba(212,175,55,0.08);
       border: 1px solid rgba(212,175,55,0.25);
       border-radius: 1.2rem;
-      padding: 1rem 1.5rem;
+      padding: 0.8rem 1.2rem;
       font-weight: 500;
       letter-spacing: 0.05em;
       color: var(--gold-light);
@@ -190,7 +187,7 @@
       aspect-ratio: 4/3;
     }
 
-    /* Галерея — подразделы */
+    /* Галерея */
     .gallery-subtabs {
       display: flex;
       justify-content: center;
@@ -225,7 +222,6 @@
       font-weight: 600;
       box-shadow: 0 0 20px rgba(212,175,55,0.4);
     }
-
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -288,25 +284,8 @@
       color: var(--gold);
       font-size: 1.4rem;
     }
-    .map-placeholder {
-      flex: 1 1 280px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 2rem;
-      height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
-      font-style: italic;
-      color: #aaa;
-      background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-    }
 
-    /* Бургер-меню (мобильная версия) */
+    /* Бургер */
     .burger {
       display: none;
       flex-direction: column;
@@ -316,6 +295,7 @@
       border: none;
       padding: 0.5rem;
       z-index: 20;
+      align-self: center;
     }
     .burger span {
       width: 28px;
@@ -324,21 +304,21 @@
       border-radius: 4px;
       transition: 0.3s;
     }
-    .mobile-nav {
+
+    /* Десктопная навигация по умолчанию видна, мобильная скрыта */
+    .desktop-nav {
       display: flex;
-      gap: 1rem;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      gap: 0.3rem;
+      margin-top: 1rem;
     }
 
     /* Адаптивность */
-    @media (max-width: 768px).site-title {
-	world-break: break-word;
-	hyphens: auto;
-	font-size: clamp(2.2rem, 8vw, 3.5rem);
-	}
-	.contacts-wrapper iframe {
-	height: 300px;
-	}
-	}
+    @media (max-width: 768px) {
       body {
         padding: 0.8rem 0.5rem 2rem;
       }
@@ -354,22 +334,18 @@
         padding: 0.5rem 1.2rem;
       }
       .burger {
-        display: flex;
+        display: flex;                       /* показываем бургер */
+      }
+      .desktop-nav {
+        display: none;                       /* скрываем ПК-вкладки */
       }
       .mobile-nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 0.3rem;
-        margin-top: 1rem;
+        display: none;                       /* скрыта, пока не открыта */
       }
       .mobile-nav.open {
-        display: flex;
+        display: flex;                       /* открывается по клику */
       }
-      .nav-tabs.desktop-nav {
-        display: none;
-      }
-      .nav-tabs.mobile-nav .nav-btn {
+      .mobile-nav .nav-btn {
         width: 100%;
         text-align: center;
       }
@@ -380,13 +356,26 @@
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 1rem;
       }
+      .site-title {
+        font-size: clamp(2rem, 8vw, 3.2rem);  /* уменьшаем заголовок на мобильных */
+        word-break: break-word;
+        hyphens: auto;
+      }
+      .contacts-wrapper iframe {
+        height: 300px;                        /* компактнее карта */
+      }
     }
+
+    /* Широкие экраны: показываем десктопную навигацию, скрываем бургер и мобильную */
     @media (min-width: 769px) {
-      .mobile-nav {
+      .burger {
         display: none;
       }
       .desktop-nav {
         display: flex;
+      }
+      .mobile-nav {
+        display: none;
       }
     }
   </style>
@@ -398,18 +387,19 @@
       <p class="site-subtitle">Дом, где комфорт становится образом жизни.</p>
     </div>
 
-    <!-- Бургер-кнопка (видна на мобильных) -->
+    <!-- Бургер-кнопка (только на мобильных) -->
     <button class="burger" id="burgerBtn" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
 
-    <!-- Навигация: три вкладки (десктоп) -->
+    <!-- Навигация для ПК (всегда видна на широком экране) -->
     <div class="nav-tabs desktop-nav" id="desktopNav">
       <button class="nav-btn active" data-tab="about">О Доме</button>
       <button class="nav-btn" data-tab="gallery">Галерея</button>
       <button class="nav-btn" data-tab="contacts">Контакты</button>
     </div>
-    <!-- Навигация мобильная -->
+
+    <!-- Навигация для мобильных (скрыта, пока не нажат бургер) -->
     <div class="nav-tabs mobile-nav" id="mobileNav">
       <button class="nav-btn active" data-tab="about">О Доме</button>
       <button class="nav-btn" data-tab="gallery">Галерея</button>
@@ -433,13 +423,12 @@
           </div>
         </div>
         <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер виллы">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер дома">
         </div>
       </div>
     </div>
 
     <div id="gallery" class="tab-content">
-      <!-- Подразделы галереи -->
       <div class="gallery-subtabs" id="gallerySubtabs">
         <button class="subtab-btn active" data-subtab="hall">Зал</button>
         <button class="subtab-btn" data-subtab="room1">Комната 1</button>
@@ -453,7 +442,6 @@
         <button class="subtab-btn" data-subtab="banya">Баня</button>
         <button class="subtab-btn" data-subtab="living_garage">Жилая комната над гаражом 1</button>
       </div>
-      <!-- Галерея с фото (контент меняется) -->
       <div class="gallery-grid" id="galleryGrid"></div>
     </div>
 
@@ -471,7 +459,7 @@
           <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
         </div>
         <div style="flex: 1 1 280px; border-radius: 2rem; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.7);">
-<div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/11333/kyzyl/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Кызыл</a><a href="https://yandex.ru/maps/11333/kyzyl/house/naberezhnaya_ulitsa_74/bU0YcgdiQUYOQFtrfXtweX5gbA==/?ll=94.402840%2C51.718238&utm_medium=mapframe&utm_source=maps&z=17.11" style="color:#eee;font-size:12px;position:absolute;top:14px;">Набережная улица, 74 — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?ll=94.402840%2C51.718238&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoyMTUyNDkwMDYwElzQoNC-0YHRgdC40Y8sINCg0LXRgdC_0YPQsdC70LjQutCwINCi0YvQstCwLCDQmtGL0LfRi9C7LCDQndCw0LHQtdGA0LXQttC90LDRjyDRg9C70LjRhtCwLCA3NCIKDUDOvEIVet9OQg%2C%2C&z=17.11" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8852a3a9f7fc1627ce7b0ca9fe40d59e95fcf841f1349f40fb762f1edc32011e&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
         </div>
       </div>
     </div>
@@ -479,42 +467,38 @@
 
   <script>
     (function() {
-      // --- Переключение главных вкладок (О доме / Галерея / Контакты) ---
       const tabButtons = document.querySelectorAll('.nav-btn');
       const tabContents = document.querySelectorAll('.tab-content');
-      const desktopNav = document.getElementById('desktopNav');
       const mobileNav = document.getElementById('mobileNav');
       const burgerBtn = document.getElementById('burgerBtn');
 
-      // Синхронизируем активные классы на обеих панелях
       function setActiveMainTab(tabId) {
-        // Обновить кнопки в обеих навигациях
         document.querySelectorAll('.nav-btn').forEach(btn => {
           btn.classList.remove('active');
           if (btn.dataset.tab === tabId) btn.classList.add('active');
         });
-        // Показать нужный контент
         tabContents.forEach(tc => tc.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-
-        // Закрыть мобильное меню после выбора
         mobileNav.classList.remove('open');
       }
 
-      // Обработчики на все кнопки главных вкладок
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-          const tabId = e.currentTarget.dataset.tab;
-          setActiveMainTab(tabId);
+          setActiveMainTab(e.currentTarget.dataset.tab);
         });
       });
 
-      // Бургер-меню
       burgerBtn.addEventListener('click', () => {
         mobileNav.classList.toggle('open');
       });
 
-      // --- Галерея: подразделы и изображения ---
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && !burgerBtn.contains(e.target)) {
+          mobileNav.classList.remove('open');
+        }
+      });
+
+      // Галерея
       const galleryData = {
         hall: {
           title: 'Зал',
@@ -603,7 +587,6 @@
         galleryGrid.innerHTML = html;
       }
 
-      // Установить активный подраздел и отрисовать
       function setActiveSubtab(subtabKey) {
         subtabButtons.forEach(btn => {
           btn.classList.remove('active');
@@ -618,17 +601,10 @@
         });
       });
 
-      // Инициализация: показать первый подраздел "Зал"
+      // Показываем первый раздел галереи
       if (subtabButtons.length > 0) {
         setActiveSubtab('hall');
       }
-
-      // Закрытие мобильного меню при клике вне него (простая логика)
-      document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && !burgerBtn.contains(e.target)) {
-          mobileNav.classList.remove('open');
-        }
-      });
     })();
   </script>
 </body>
