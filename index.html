@@ -56,11 +56,11 @@
       justify-content: flex-start;
       padding: 1.5rem 1rem 3rem;
       -webkit-transform: translateZ(0);
-      touch-action: manipulation;            /* убирает двойные касания */
+      touch-action: manipulation;
     }
     body.no-scroll {
       overflow: hidden;
-      position: fixed;                     /* дополнительно фиксируем, чтобы не было скролла */
+      position: fixed;
       width: 100%;
     }
 
@@ -263,7 +263,7 @@
       border: 1px solid rgba(255,255,255,0.1);
       background: #111;
       cursor: pointer;
-      touch-action: manipulation;        /* важно для мобильных кликов */
+      touch-action: manipulation;
     }
     .gallery-card:hover {
       transform: translateY(-8px);
@@ -285,7 +285,7 @@
       background: rgba(0,0,0,0.7);
     }
 
-    /* Лайтбокс – теперь картинка всегда по центру */
+    /* Лайтбокс – надёжное центрирование */
     .lightbox {
       display: none;
       position: fixed;
@@ -302,12 +302,9 @@
       display: flex;
     }
     .lightbox img {
-      position: absolute;                 /* абсолютное позиционирование */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);  /* идеальное центрирование */
+      display: block;
       max-width: 90%;
-      max-height: 80vh;                  /* чуть уменьшили, чтобы точно влезало */
+      max-height: 85vh;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -493,7 +490,7 @@
       body {
         background-attachment: scroll;
         padding: 0.8rem 0.5rem 2rem;
-        -webkit-overflow-scrolling: touch;  /* плавная прокрутка */
+        -webkit-overflow-scrolling: touch;
       }
       .main-container {
         padding: 1.8rem 1.2rem;
@@ -519,7 +516,7 @@
       .max-float svg { width: 30px; height: 30px; }
       .call-mobile { display: block; }
       .lightbox-arrow { font-size: 2.5rem; padding: 0.5rem; }
-      .lightbox img { max-height: 75vh; }   /* на телефонах чуть уменьшаем высоту */
+      .lightbox img { max-height: 75vh; }
     }
 
     @media (min-width: 769px) {
