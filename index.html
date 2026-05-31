@@ -1,15 +1,3 @@
- Ничего не выбрано
-
-Перейти к содержимому
-Gmail используется с программой чтения с экрана
-1 из 851
-(без темы)
-Входящие
-
-Вениамин Федоров <evnris01@gmail.com>
-19:07 (0 минут назад)
-кому: мне
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -68,10 +56,12 @@ Gmail используется с программой чтения с экра�
       justify-content: flex-start;
       padding: 1.5rem 1rem 3rem;
       -webkit-transform: translateZ(0);
-      touch-action: manipulation;
+      touch-action: manipulation;            /* убирает двойные касания */
     }
     body.no-scroll {
       overflow: hidden;
+      position: fixed;                     /* дополнительно фиксируем, чтобы не было скролла */
+      width: 100%;
     }
 
     :root {
@@ -273,6 +263,7 @@ Gmail используется с программой чтения с экра�
       border: 1px solid rgba(255,255,255,0.1);
       background: #111;
       cursor: pointer;
+      touch-action: manipulation;        /* важно для мобильных кликов */
     }
     .gallery-card:hover {
       transform: translateY(-8px);
@@ -294,7 +285,7 @@ Gmail используется с программой чтения с экра�
       background: rgba(0,0,0,0.7);
     }
 
-    /* Лайтбокс */
+    /* Лайтбокс – теперь картинка всегда по центру */
     .lightbox {
       display: none;
       position: fixed;
@@ -311,8 +302,14 @@ Gmail используется с программой чтения с экра�
       display: flex;
     }
     .lightbox img {
+      position: absolute;                 /* абсолютное позиционирование */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);  /* идеальное центрирование */
       max-width: 90%;
-      max-height: 85vh;
+      max-height: 80vh;                  /* чуть уменьшили, чтобы точно влезало */
+      width: auto;
+      height: auto;
       object-fit: contain;
       border-radius: 1.5rem;
       box-shadow: 0 0 60px rgba(212,175,55,0.3);
@@ -496,6 +493,7 @@ Gmail используется с программой чтения с экра�
       body {
         background-attachment: scroll;
         padding: 0.8rem 0.5rem 2rem;
+        -webkit-overflow-scrolling: touch;  /* плавная прокрутка */
       }
       .main-container {
         padding: 1.8rem 1.2rem;
@@ -521,6 +519,7 @@ Gmail используется с программой чтения с экра�
       .max-float svg { width: 30px; height: 30px; }
       .call-mobile { display: block; }
       .lightbox-arrow { font-size: 2.5rem; padding: 0.5rem; }
+      .lightbox img { max-height: 75vh; }   /* на телефонах чуть уменьшаем высоту */
     }
 
     @media (min-width: 769px) {
