@@ -1,8 +1,20 @@
+ Ничего не выбрано
+
+Перейти к содержимому
+Gmail используется с программой чтения с экрана
+1 из 851
+(без темы)
+Входящие
+
+Вениамин Федоров <evnris01@gmail.com>
+19:07 (0 минут назад)
+кому: мне
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
   <title>Дом на Набережной — продажа</title>
 
   <!-- Favicon (золотой домик) -->
@@ -56,6 +68,7 @@
       justify-content: flex-start;
       padding: 1.5rem 1rem 3rem;
       -webkit-transform: translateZ(0);
+      touch-action: manipulation;
     }
     body.no-scroll {
       overflow: hidden;
@@ -435,9 +448,6 @@
     }
     .fav-btn:hover { background: var(--gold); color: #0a0a0a; }
 
-    /* Счётчик */
-    .counter { text-align: center; margin-top: 1.5rem; }
-
     /* Тост */
     .toast {
       position: fixed;
@@ -526,14 +536,6 @@
     <div>
       <h1 class="site-title">ДОМ НА НАБЕРЕЖНОЙ</h1>
       <p class="site-subtitle">Дом, где комфорт становится образом жизни.</p>
-      <!-- Общий счётчик просмотров (LiveInternet) -->
-      <div class="counter">
-        <a href="https://www.liveinternet.ru/click" target="_blank">
-          <img src="https://counter.yadro.ru/logo?44.1" 
-               title="Просмотры за сегодня" 
-               alt="" style="border:0; height:31px; width:88px; filter: drop-shadow(0 0 6px rgba(212,175,55,0.5));">
-        </a>
-      </div>
     </div>
 
     <button class="burger" id="burgerBtn" aria-label="Меню">
