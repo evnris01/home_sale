@@ -57,6 +57,9 @@
       padding: 1.5rem 1rem 3rem;
       -webkit-transform: translateZ(0);
     }
+    body.no-scroll {
+      overflow: hidden;
+    }
 
     :root {
       --gold: #D4AF37;
@@ -286,7 +289,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.92);
       z-index: 2000;
       justify-content: center;
       align-items: center;
@@ -296,10 +299,11 @@
     }
     .lightbox img {
       max-width: 90%;
-      max-height: 90%;
+      max-height: 85vh;
       object-fit: contain;
       border-radius: 1.5rem;
       box-shadow: 0 0 60px rgba(212,175,55,0.3);
+      transition: opacity 0.3s;
     }
     .lightbox-close {
       position: absolute;
@@ -313,6 +317,26 @@
       border: none;
       line-height: 1;
     }
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: var(--gold);
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 2001;
+      padding: 1rem;
+      transition: 0.2s;
+      user-select: none;
+    }
+    .lightbox-arrow:hover {
+      color: #fff;
+      text-shadow: 0 0 15px rgba(212,175,55,0.7);
+    }
+    .lightbox-arrow.left { left: 1rem; }
+    .lightbox-arrow.right { right: 1rem; }
 
     /* Контакты */
     .contacts-wrapper {
@@ -339,10 +363,7 @@
       gap: 0.7rem;
       margin-bottom: 0.8rem;
     }
-    .gold-icon {
-      color: var(--gold);
-      font-size: 1.4rem;
-    }
+    .gold-icon { color: var(--gold); font-size: 1.4rem; }
 
     .map-container {
       flex: 1 1 280px;
@@ -356,14 +377,14 @@
       border: 0;
     }
 
-    /* Кнопка Макс (замена WhatsApp) */
+    /* Кнопка Макс с логотипом */
     .max-float {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       width: 60px;
       height: 60px;
-      background-color: #005FF9;  /* фирменный синий Mail.ru */
+      background-color: #ffffff;
       border-radius: 50%;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5);
       display: flex;
@@ -373,17 +394,8 @@
       transition: transform 0.3s;
       text-decoration: none;
     }
-    .max-float:hover {
-      transform: scale(1.1);
-    }
-    .max-float span {
-      color: white;
-      font-size: 28px;
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1;
-      user-select: none;
-    }
+    .max-float:hover { transform: scale(1.1); }
+    .max-float svg { width: 36px; height: 36px; }
 
     /* Кнопка Позвонить (мобильная) */
     .call-mobile {
@@ -421,20 +433,12 @@
       transition: 0.3s;
       margin-top: 1rem;
     }
-    .fav-btn:hover {
-      background: var(--gold);
-      color: #0a0a0a;
-    }
+    .fav-btn:hover { background: var(--gold); color: #0a0a0a; }
 
     /* Счётчик */
-    .counter {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #999;
-      margin-top: 1.5rem;
-    }
+    .counter { text-align: center; font-size: 0.9rem; color: #999; margin-top: 1.5rem; }
 
-    /* Тост (уведомление) */
+    /* Тост */
     .toast {
       position: fixed;
       bottom: 2rem;
@@ -452,9 +456,7 @@
       pointer-events: none;
       white-space: nowrap;
     }
-    .toast.show {
-      opacity: 1;
-    }
+    .toast.show { opacity: 1; }
 
     /* Бургер */
     .burger {
@@ -506,8 +508,9 @@
       }
       .gallery-card img { height: 180px; }
       .max-float { bottom: 5rem; right: 1.5rem; width: 50px; height: 50px; }
-      .max-float span { font-size: 24px; }
+      .max-float svg { width: 30px; height: 30px; }
       .call-mobile { display: block; }
+      .lightbox-arrow { font-size: 2.5rem; padding: 0.5rem; }
     }
 
     @media (min-width: 769px) {
@@ -547,11 +550,11 @@
       <div class="about-grid">
         <div class="about-text">
           <h2>Информация к прочтению.</h2>
-          <p>Продаётся полностью благоустроенный дом площадью 100 м².</p>
+          <p>Продаётся полностью благоустроенный дом площадью 108 м².</p>
           <p>В минуте ходьбы — живописный берег реки Енисей, а также всё, что нужно для комфортной жизни: магазины, детский сад, школа, тренажёрный зал, пункты выдачи, почта и больница.</p>
           <p>Вокруг — доброжелательные и порядочные соседи. Новая дорога и современное уличное освещение довершают образ идеального места для спокойной и удобной жизни.</p>
           <div class="about-features">
-            <span class="feature-item">Дом 100 м²</span>
+            <span class="feature-item">Дом 108 м²</span>
             <span class="feature-item">Территория 6 соток</span>
             <span class="feature-item">2 гаража</span>
             <span class="feature-item">Баня</span>
@@ -598,7 +601,7 @@
           <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
         </div>
         <div class="map-container">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2e3d1f756beed1dce80ba7a9982bb348f3ec3fa41f496d047a9016361b8e6966&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
+		<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2e3d1f756beed1dce80ba7a9982bb348f3ec3fa41f496d047a9016361b8e6966&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
         </div>
       </div>
     </div>
@@ -607,12 +610,17 @@
   <!-- Лайтбокс -->
   <div id="lightbox" class="lightbox">
     <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <button class="lightbox-arrow left" id="lightboxPrev">&#10094;</button>
+    <button class="lightbox-arrow right" id="lightboxNext">&#10095;</button>
     <img src="" id="lightboxImg" alt="Полноэкранное фото">
   </div>
 
-  <!-- Кнопка Макс (мессенджер) -->
-  <a href="https://max.ru/chat?phone=79966090812" class="max-float" target="_blank" title="Написать в Макс">
-    <span>M</span>
+  <!-- Кнопка Макс с логотипом -->
+  <a href="https://max.ru/u/f9LHodD0cOIcOk3gdwyGMuwSvlQGE7hPiqoi5RZB8WQOFBvq5_3SKFMlfik" class="max-float" target="_blank" title="Написать в Макс">
+    <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="24" fill="#005FF9"/>
+      <text x="24" y="32" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">M</text>
+    </svg>
   </a>
 
   <!-- Кнопка Позвонить (мобильная) -->
@@ -621,18 +629,23 @@
   <!-- Тост -->
   <div id="toast" class="toast"></div>
 
+  <!-- Скрипты -->
   <script>
     (function() {
-      // --- Переключение главных вкладок ---
+      // --- Переключение главных вкладок (восстановлено) ---
       const tabButtons = document.querySelectorAll('.nav-btn');
       const tabContents = document.querySelectorAll('.tab-content');
       const mobileNav = document.getElementById('mobileNav');
       const burgerBtn = document.getElementById('burgerBtn');
 
       function setActiveMainTab(tabId) {
-        tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
+        tabButtons.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.tab === tabId) btn.classList.add('active');
+        });
         tabContents.forEach(tc => tc.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+        const activeTab = document.getElementById(tabId);
+        if (activeTab) activeTab.classList.add('active');
         mobileNav.classList.remove('open');
         if (tabId === 'gallery') renderGalleryForActiveSubtab();
       }
@@ -653,50 +666,17 @@
 
       // --- Галерея ---
       const galleryData = {
-        hall: {
-          title: 'Зал',
-          photos: ['hall1-1.jpg', 'hall1-2.jpg']
-        },
-        room1: {
-          title: 'Комната 1',
-          photos: ['room1-1.jpg', 'room1-2.jpg', 'room1-3.jpg']
-        },
-        room2: {
-          title: 'Комната 2',
-          photos: ['room2-1.jpg', 'room2-2.jpg', 'room2-3.jpg']
-        },
-        room3: {
-          title: 'Комната 3',
-          photos: ['room3-1.jpg', 'room3-2.jpg', 'room3-3.jpg']
-        },
-        kitchen: {
-          title: 'Кухня',
-          photos: ['kitchen1-1.jpg', 'kitchen1-2.jpg', 'kitchen1-3.jpg', 'kitchen1-4.jpg']
-        },
-        bathroom: {
-          title: 'Ванная комната',
-          photos: ['bathroom1-1.jpg', 'bathroom1-2.jpg', 'bathroom1-3.jpg', 'bathroom1-4.jpg']
-        },
-        warm_hall: {
-          title: 'Тёплые сенки',
-          photos: ['warm_hall1-1.jpg', 'warm-hall1-2.jpg', 'warm-hall1-3.jpg']
-        },
-        garage1: {
-          title: 'Гараж 1',
-          photos: ['garage1-1.jpg', 'garage1-2.jpg', 'garage1-3.jpg', 'garage1-4.jpg']
-        },
-        garage2: {
-          title: 'Гараж 2',
-          photos: ['garage2-1.jpg', 'garage2-2.jpg', 'garage2-3.jpg', 'garage2-4.jpg', 'garage2-5.jpg']
-        },
-        banya: {
-          title: 'Баня',
-          photos: ['banya1-1.jpg', 'banya1-2.jpg', 'banya1-3.jpg', 'banya1-4.jpg', 'banya1-5.jpg', 'banya1-6.jpg']
-        },
-        living_garage: {
-          title: 'Жилая комната над гаражом 1',
-          photos: ['living_garage1-1.jpg', 'living_garage1-2.jpg', 'living-garage1-3.jpg', 'living_garage1-4.jpg', 'living_garage1-5.jpg', 'living_garage1-6.jpg']
-        }
+        hall: { title: 'Зал', photos: ['hall1-1.jpg', 'hall1-2.jpg'] },
+        room1: { title: 'Комната 1', photos: ['room1-1.jpg', 'room1-2.jpg', 'room1-3.jpg'] },
+        room2: { title: 'Комната 2', photos: ['room2-1.jpg', 'room2-2.jpg', 'room2-3.jpg'] },
+        room3: { title: 'Комната 3', photos: ['room3-1.jpg', 'room3-2.jpg', 'room3-3.jpg'] },
+        kitchen: { title: 'Кухня', photos: ['kitchen1-1.jpg', 'kitchen1-2.jpg', 'kitchen1-3.jpg', 'kitchen1-4.jpg'] },
+        bathroom: { title: 'Ванная комната', photos: ['bathroom1-1.jpg', 'bathroom1-2.jpg', 'bathroom1-3.jpg', 'bathroom1-4.jpg'] },
+        warm_hall: { title: 'Тёплые сенки', photos: ['warm_hall1-1.jpg', 'warm-hall1-2.jpg', 'warm-hall1-3.jpg'] },
+        garage1: { title: 'Гараж 1', photos: ['garage1-1.jpg', 'garage1-2.jpg', 'garage1-3.jpg', 'garage1-4.jpg'] },
+        garage2: { title: 'Гараж 2', photos: ['garage2-1.jpg', 'garage2-2.jpg', 'garage2-3.jpg', 'garage2-4.jpg', 'garage2-5.jpg'] },
+        banya: { title: 'Баня', photos: ['banya1-1.jpg', 'banya1-2.jpg', 'banya1-3.jpg', 'banya1-4.jpg', 'banya1-5.jpg', 'banya1-6.jpg'] },
+        living_garage: { title: 'Жилая комната над гаражом 1', photos: ['living_garage1-1.jpg', 'living_garage1-2.jpg', 'living-garage1-3.jpg', 'living_garage1-4.jpg', 'living_garage1-5.jpg', 'living_garage1-6.jpg'] }
       };
 
       const subtabButtons = document.querySelectorAll('.subtab-btn');
@@ -704,30 +684,62 @@
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
       const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
 
-      // Лайтбокс
-      function openLightbox(src) {
-        lightboxImg.src = src;
+      let currentPhotos = [];
+      let currentIndex = 0;
+
+      function openLightbox(photosArray, index) {
+        currentPhotos = photosArray;
+        currentIndex = index;
+        updateLightboxImage();
         lightbox.classList.add('active');
+        document.body.classList.add('no-scroll');
       }
+
       function closeLightbox() {
         lightbox.classList.remove('active');
+        document.body.classList.remove('no-scroll');
       }
+
+      function updateLightboxImage() {
+        lightboxImg.src = currentPhotos[currentIndex];
+      }
+
+      function showNext() {
+        if (currentPhotos.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentPhotos.length;
+        updateLightboxImage();
+      }
+
+      function showPrev() {
+        if (currentPhotos.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+        updateLightboxImage();
+      }
+
       lightboxClose.addEventListener('click', closeLightbox);
+      lightboxPrev.addEventListener('click', showPrev);
+      lightboxNext.addEventListener('click', showNext);
+
       lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
       });
+
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-          closeLightbox();
-        }
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
       });
 
       function renderGallery(subtabKey) {
         const data = galleryData[subtabKey];
         if (!data) return;
+        const photos = data.photos;
         let html = '';
-        data.photos.forEach((src, idx) => {
+        photos.forEach((src, idx) => {
           html += `
             <div class="gallery-card">
               <img src="${src}" alt="${data.title} фото ${idx+1}" loading="lazy">
@@ -737,10 +749,9 @@
         });
         galleryGrid.innerHTML = html;
 
-        document.querySelectorAll('.gallery-card').forEach(card => {
+        document.querySelectorAll('.gallery-card').forEach((card, idx) => {
           card.addEventListener('click', function(e) {
-            const img = this.querySelector('img');
-            if (img) openLightbox(img.src);
+            openLightbox(photos, idx);
           });
         });
       }
@@ -773,7 +784,7 @@
         document.getElementById('pageViews').textContent = 'Просмотров: ' + views;
       })();
 
-      // --- Кнопка В избранное (умная) ---
+      // --- Кнопка В избранное ---
       window.addToFavorites = function() {
         const url = window.location.href;
         navigator.clipboard.writeText(url).then(() => {
