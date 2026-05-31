@@ -14,7 +14,7 @@
       "@context": "https://schema.org",
       "@type": "Residence",
       "name": "Дом на Набережной",
-      "description": "Продаётся самоблагоустроенный дом 108 м² в Кызыле, на берегу Енисея.",
+      "description": "Продаётся полностью благоустроенный дом 108 м² в Кызыле, на берегу Енисея.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "ул. Набережная, д. 74",
@@ -24,7 +24,7 @@
       "telephone": "+7-996-609-08-12",
       "floorSize": {
         "@type": "QuantitativeValue",
-        "value": 100,
+        "value": 108,
         "unitCode": "MTK"
       }
     }
@@ -43,7 +43,7 @@
       background: #0a0a0a;
       color: #e0e0e0;
       min-height: 100vh;
-      background-image: 
+      background-image:
         linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(10,10,10,0.75) 100%),
         url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
@@ -377,7 +377,7 @@
       border: 0;
     }
 
-    /* Кнопка Макс с логотипом */
+    /* Кнопка Макс */
     .max-float {
       position: fixed;
       bottom: 2rem;
@@ -436,7 +436,7 @@
     .fav-btn:hover { background: var(--gold); color: #0a0a0a; }
 
     /* Счётчик */
-    .counter { text-align: center; font-size: 0.9rem; color: #999; margin-top: 1.5rem; }
+    .counter { text-align: center; margin-top: 1.5rem; }
 
     /* Тост */
     .toast {
@@ -526,7 +526,12 @@
     <div>
       <h1 class="site-title">ДОМ НА НАБЕРЕЖНОЙ</h1>
       <p class="site-subtitle">Дом, где комфорт становится образом жизни.</p>
-      <div class="counter" id="pageViews">Просмотров: 0</div>
+      <!-- Общий счётчик просмотров (HitWebCounter) -->
+      <div class="counter">
+        <a href="https://www.hitwebcounter.com" target="_blank">
+          <img src="https://hitwebcounter.com/counter/counter.php?page=18050103&style=0006&nbdigits=5&type=page&initCount=50" title="просмотры" alt="просмотры" border="0">
+        </a>
+      </div>
     </div>
 
     <button class="burger" id="burgerBtn" aria-label="Меню">
@@ -601,7 +606,7 @@
           <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
         </div>
         <div class="map-container">
-		<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2e3d1f756beed1dce80ba7a9982bb348f3ec3fa41f496d047a9016361b8e6966&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2e3d1f756beed1dce80ba7a9982bb348f3ec3fa41f496d047a9016361b8e6966&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
         </div>
       </div>
     </div>
@@ -632,7 +637,7 @@
   <!-- Скрипты -->
   <script>
     (function() {
-      // --- Переключение главных вкладок (восстановлено) ---
+      // --- Переключение главных вкладок ---
       const tabButtons = document.querySelectorAll('.nav-btn');
       const tabContents = document.querySelectorAll('.tab-content');
       const mobileNav = document.getElementById('mobileNav');
@@ -775,14 +780,6 @@
       if (document.getElementById('gallery').classList.contains('active')) {
         renderGalleryForActiveSubtab();
       }
-
-      // --- Счётчик просмотров ---
-      (function() {
-        let views = localStorage.getItem('pageViews') || 0;
-        views++;
-        localStorage.setItem('pageViews', views);
-        document.getElementById('pageViews').textContent = 'Просмотров: ' + views;
-      })();
 
       // --- Кнопка В избранное ---
       window.addToFavorites = function() {
