@@ -3,16 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Продаётся брусовой дом</title>
+  <title>Дом на Набережной — продажа</title>
+
+  <!-- Favicon (золотой домик) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>" type="image/svg+xml">
+
+  <!-- Микроразметка Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Residence",
+      "name": "Дом на Набережной",
+      "description": "Продаётся полностью благоустроенный дом 100 м² в Кызыле, на берегу Енисея.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Набережная, д. 74",
+        "addressLocality": "Кызыл",
+        "addressCountry": "RU"
+      },
+      "telephone": "+7-996-609-08-12",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 100,
+        "unitCode": "MTK"
+      }
+    }
+  </script>
+
+  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -20,7 +47,7 @@
       color: #e0e0e0;
       min-height: 100vh;
       background-image: 
-        linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(10,10,10,0.7) 100%),
+        linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(10,10,10,0.75) 100%),
         url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
       background-position: center 40%;
@@ -31,14 +58,12 @@
       align-items: center;
       justify-content: flex-start;
       padding: 1.5rem 1rem 3rem;
-      backdrop-filter: blur(1px);
     }
 
     :root {
       --gold: #D4AF37;
       --gold-light: #F3E1A4;
-      --dark-bg: rgba(10, 10, 10, 0.8);
-      --glass-bg: rgba(20, 20, 20, 0.65);
+      --glass-bg: rgba(20, 20, 20, 0.7);
       --glass-border: rgba(212, 175, 55, 0.25);
     }
 
@@ -56,6 +81,7 @@
       flex-direction: column;
       gap: 2rem;
       margin-top: 1rem;
+      position: relative;
     }
 
     .site-title {
@@ -81,7 +107,7 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Навигация — общие стили */
+    /* Навигация */
     .nav-tabs {
       display: flex;
       justify-content: center;
@@ -102,7 +128,7 @@
       padding: 0.7rem 2rem;
       border-radius: 3rem;
       cursor: pointer;
-      transition: all 0.35s ease;
+      transition: all 0.2s ease;
       text-transform: uppercase;
       background: rgba(255,255,255,0.03);
       backdrop-filter: blur(4px);
@@ -119,31 +145,34 @@
       border-color: var(--gold);
       box-shadow: 0 0 30px rgba(212,175,55,0.5);
       font-weight: 700;
-      letter-spacing: 0.1em;
     }
 
     /* Контент вкладок */
     .tab-content {
       display: none;
-      animation: fadeSlide 0.5s ease;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 500px;
     }
     .tab-content.active {
       display: block;
+      content-visibility: visible;
     }
     @keyframes fadeSlide {
       0% { opacity: 0; transform: translateY(12px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+    .tab-content.active {
+      animation: fadeSlide 0.4s ease;
+    }
 
+    /* О доме */
     .about-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 2.5rem;
       align-items: center;
     }
-    .about-text {
-      flex: 1 1 300px;
-    }
+    .about-text { flex: 1 1 300px; }
     .about-text h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
@@ -187,6 +216,25 @@
       aspect-ratio: 4/3;
     }
 
+    /* Видео */
+    .video-block {
+      margin-top: 2rem;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-block iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* Галерея */
     .gallery-subtabs {
       display: flex;
@@ -207,7 +255,7 @@
       padding: 0.5rem 1.5rem;
       border-radius: 2rem;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.2s;
       background: rgba(20,20,20,0.5);
       backdrop-filter: blur(4px);
     }
@@ -222,37 +270,35 @@
       font-weight: 600;
       box-shadow: 0 0 20px rgba(212,175,55,0.4);
     }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-    .gallery-card {
+
+    .swiper {
+      width: 100%;
       border-radius: 1.5rem;
       overflow: hidden;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.7);
-      transition: transform 0.4s ease, box-shadow 0.4s;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: #111;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
     }
-    .gallery-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 40px rgba(212,175,55,0.25);
-      border-color: var(--gold);
-    }
-    .gallery-card img {
+    .swiper-slide img {
       width: 100%;
-      height: 220px;
+      height: 400px;
       object-fit: cover;
       display: block;
     }
-    .gallery-caption {
-      padding: 0.7rem 1rem;
-      font-weight: 400;
-      font-size: 0.9rem;
-      color: #ccc;
-      text-align: center;
+    .swiper-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background: rgba(0,0,0,0.7);
+      color: #ccc;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: var(--gold) !important;
+    }
+    .swiper-pagination-bullet-active {
+      background: var(--gold) !important;
     }
 
     /* Контакты */
@@ -285,6 +331,106 @@
       font-size: 1.4rem;
     }
 
+    /* WhatsApp floating button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-float img {
+      width: 35px;
+      height: 35px;
+    }
+
+    /* Кнопка Позвонить (мобильная) */
+    .call-mobile {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--gold);
+      color: #0a0a0a;
+      text-align: center;
+      padding: 0.9rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      z-index: 999;
+      text-decoration: none;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.4);
+    }
+    .call-mobile span {
+      margin-right: 0.5rem;
+    }
+
+    /* Кнопка В избранное */
+    .fav-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: 0.3s;
+      margin-top: 1rem;
+    }
+    .fav-btn:hover {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+
+    /* Счётчик */
+    .counter {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+      margin-top: 1.5rem;
+    }
+
+    /* Кнопка музыки */
+    #musicControl {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 1001;
+      background: rgba(20,20,20,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    #musicIcon {
+      color: var(--gold);
+      font-size: 1.5rem;
+      user-select: none;
+    }
+
     /* Бургер */
     .burger {
       display: none;
@@ -305,78 +451,44 @@
       transition: 0.3s;
     }
 
-    /* Десктопная навигация по умолчанию видна, мобильная скрыта */
-    .desktop-nav {
-      display: flex;
-    }
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      gap: 0.3rem;
-      margin-top: 1rem;
-    }
+    .desktop-nav { display: flex; }
+    .mobile-nav { display: none; flex-direction: column; width: 100%; gap: 0.3rem; margin-top: 1rem; }
 
-    /* Адаптивность */
     @media (max-width: 768px) {
       body {
+        background-attachment: scroll;
         padding: 0.8rem 0.5rem 2rem;
       }
       .main-container {
         padding: 1.8rem 1.2rem;
         border-radius: 2rem;
       }
-      .nav-tabs {
-        gap: 0.5rem;
+      .burger { display: flex; }
+      .desktop-nav { display: none; }
+      .mobile-nav { display: none; }
+      .mobile-nav.open { display: flex; }
+      .mobile-nav .nav-btn { width: 100%; text-align: center; }
+      .about-grid { flex-direction: column; }
+      .site-title { font-size: clamp(2rem, 8vw, 3.2rem); }
+      .contacts-wrapper iframe { height: 300px; }
+      .swiper-slide img { height: 250px; }
+      .whatsapp-float { bottom: 5rem; right: 1.5rem; width: 50px; height: 50px; }
+      .whatsapp-float img { width: 28px; height: 28px; }
+      .call-mobile { display: block; }
+      #musicControl {
+        bottom: 5rem;
+        left: 1.5rem;
+        width: 45px;
+        height: 45px;
       }
-      .nav-btn {
-        font-size: 1rem;
-        padding: 0.5rem 1.2rem;
-      }
-      .burger {
-        display: flex;                       /* показываем бургер */
-      }
-      .desktop-nav {
-        display: none;                       /* скрываем ПК-вкладки */
-      }
-      .mobile-nav {
-        display: none;                       /* скрыта, пока не открыта */
-      }
-      .mobile-nav.open {
-        display: flex;                       /* открывается по клику */
-      }
-      .mobile-nav .nav-btn {
-        width: 100%;
-        text-align: center;
-      }
-      .about-grid {
-        flex-direction: column;
-      }
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1rem;
-      }
-      .site-title {
-        font-size: clamp(2rem, 8vw, 3.2rem);  /* уменьшаем заголовок на мобильных */
-        word-break: break-word;
-        hyphens: auto;
-      }
-      .contacts-wrapper iframe {
-        height: 300px;                        /* компактнее карта */
-      }
+      #musicIcon { font-size: 1.3rem; }
     }
 
-    /* Широкие экраны: показываем десктопную навигацию, скрываем бургер и мобильную */
     @media (min-width: 769px) {
-      .burger {
-        display: none;
-      }
-      .desktop-nav {
-        display: flex;
-      }
-      .mobile-nav {
-        display: none;
-      }
+      .burger { display: none; }
+      .desktop-nav { display: flex; }
+      .mobile-nav { display: none; }
+      .call-mobile { display: none; }
     }
   </style>
 </head>
@@ -385,28 +497,26 @@
     <div>
       <h1 class="site-title">ДОМ НА НАБЕРЕЖНОЙ</h1>
       <p class="site-subtitle">Дом, где комфорт становится образом жизни.</p>
+      <div class="counter" id="pageViews">Просмотров: 0</div>
     </div>
 
-    <!-- Бургер-кнопка (только на мобильных) -->
     <button class="burger" id="burgerBtn" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
 
-    <!-- Навигация для ПК (всегда видна на широком экране) -->
+    <!-- Навигация -->
     <div class="nav-tabs desktop-nav" id="desktopNav">
       <button class="nav-btn active" data-tab="about">О Доме</button>
       <button class="nav-btn" data-tab="gallery">Галерея</button>
       <button class="nav-btn" data-tab="contacts">Контакты</button>
     </div>
-
-    <!-- Навигация для мобильных (скрыта, пока не нажат бургер) -->
     <div class="nav-tabs mobile-nav" id="mobileNav">
       <button class="nav-btn active" data-tab="about">О Доме</button>
       <button class="nav-btn" data-tab="gallery">Галерея</button>
       <button class="nav-btn" data-tab="contacts">Контакты</button>
     </div>
 
-    <!-- Контент вкладок -->
+    <!-- Вкладка О доме -->
     <div id="about" class="tab-content active">
       <div class="about-grid">
         <div class="about-text">
@@ -423,11 +533,19 @@
           </div>
         </div>
         <div class="about-image">
-          <img src="main-house.jpg" alt="Фасад дома" loading="lazy">
+          <img src="main-house.jpg" alt="Фасад дома на Набережной" loading="lazy">
         </div>
       </div>
+
+      <!-- Видео (замените на своё) -->
+      <div class="video-block" style="margin-top:2rem;">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Видео-презентация дома" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <button class="fav-btn" onclick="addToFavorites()">⭐ В избранное</button>
     </div>
 
+    <!-- Галерея -->
     <div id="gallery" class="tab-content">
       <div class="gallery-subtabs" id="gallerySubtabs">
         <button class="subtab-btn active" data-subtab="hall">Зал</button>
@@ -435,16 +553,23 @@
         <button class="subtab-btn" data-subtab="room2">Комната 2</button>
         <button class="subtab-btn" data-subtab="room3">Комната 3</button>
         <button class="subtab-btn" data-subtab="kitchen">Кухня</button>
-        <button class="subtab-btn" data-subtab="bathroom">Ванная комната</button>
+        <button class="subtab-btn" data-subtab="bathroom">Ванная</button>
         <button class="subtab-btn" data-subtab="warm_hall">Тёплые сенки</button>
         <button class="subtab-btn" data-subtab="garage1">Гараж 1</button>
         <button class="subtab-btn" data-subtab="garage2">Гараж 2</button>
         <button class="subtab-btn" data-subtab="banya">Баня</button>
         <button class="subtab-btn" data-subtab="living_garage">Жилая комната над гаражом 1</button>
       </div>
-      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <div class="swiper" id="gallerySwiper">
+        <div class="swiper-wrapper" id="swiperWrapper"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </div>
 
+    <!-- Контакты -->
     <div id="contacts" class="tab-content">
       <div class="contacts-wrapper">
         <div class="contact-info">
@@ -452,45 +577,61 @@
           <div class="contact-detail"><span class="gold-icon">📍</span> г. Кызыл, ул. Набережная д. 74</div>
           <div class="contact-detail">
             <span class="gold-icon">📞</span>
-            <a href="tel:+79966090812" style="color: #D4AF37; text-decoration: none; font-weight: 400;">
-              +7-996-609-08-12
-            </a>
+            <a href="tel:+79966090812" style="color: #D4AF37; text-decoration: none;">+7-996-609-08-12</a>
           </div>
           <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
-        </div>
-        <div style="flex: 1 1 280px; border-radius: 2rem; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.7);">
-<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8852a3a9f7fc1627ce7b0ca9fe40d59e95fcf841f1349f40fb762f1edc32011e&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
+
+          <div style="flex:1; margin-top:1.5rem; border-radius:2rem; overflow:hidden; box-shadow:0 15px 30px rgba(0,0,0,0.7);">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa562effe5c9328ee4a45e8c59fd6e93eeef96d9aa70dfe0c8fb1187983cea839&amp;source=constructor" width="100%" height="300" frameborder="0" style="border:0;"></iframe>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- WhatsApp -->
+  <a href="https://wa.me/79966090812?text=Здравствуйте%2C+интересует+дом+на+Набережной" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- Кнопка Позвонить (мобильная) -->
+  <a href="tel:+79966090812" class="call-mobile"><span>📞</span> Позвонить</a>
+
+  <!-- Кнопка музыки -->
+  <div id="musicControl">
+    <span id="musicIcon">♪</span>
+  </div>
+
+  <!-- Аудио -->
+  <audio id="bgMusic" loop preload="auto" volume="0.3">
+    <source src="https://cdn.pixabay.com/audio/2024/05/20/audio_8e9b7a1c1b.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     (function() {
+      // Переключение главных вкладок
       const tabButtons = document.querySelectorAll('.nav-btn');
       const tabContents = document.querySelectorAll('.tab-content');
       const mobileNav = document.getElementById('mobileNav');
       const burgerBtn = document.getElementById('burgerBtn');
 
       function setActiveMainTab(tabId) {
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.dataset.tab === tabId) btn.classList.add('active');
-        });
+        tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
         tabContents.forEach(tc => tc.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
         mobileNav.classList.remove('open');
+        if (tabId === 'gallery') initSwiperForCurrentSubtab();
       }
 
-      document.querySelectorAll('.nav-btn').forEach(btn => {
+      tabButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
           setActiveMainTab(e.currentTarget.dataset.tab);
         });
       });
 
-      burgerBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-      });
+      burgerBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
 
       document.addEventListener('click', (e) => {
         if (!mobileNav.contains(e.target) && !burgerBtn.contains(e.target)) {
@@ -498,101 +639,92 @@
         }
       });
 
-      // Галерея
+      // Галерея с вашими фото
       const galleryData = {
         hall: {
           title: 'Зал',
-          photos: [
-            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['hall1-1.jpg', 'hall1-2.jpg']
         },
         room1: {
           title: 'Комната 1',
-          photos: [
-            'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['room1-1.jpg', 'room1-2.jpg', 'room1-3.jpg']
         },
         room2: {
           title: 'Комната 2',
-          photos: [
-            'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['room2-1.jpg', 'room2-2.jpg', 'room2-3.jpg']
         },
         room3: {
           title: 'Комната 3',
-          photos: [
-            'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['room3-1.jpg', 'room3-2.jpg', 'room3-3.jpg']
         },
         kitchen: {
           title: 'Кухня',
-          photos: [
-            'https://images.unsplash.com/photo-1604709177225-055f99402ea3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['kitchen1-1.jpg', 'kitchen1-2.jpg', 'kitchen1-3.jpg', 'kitchen1-4.jpg']
         },
         bathroom: {
           title: 'Ванная комната',
-          photos: [
-            'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['bathroom1-1.jpg', 'bathroom1-2.jpg', 'bathroom1-3.jpg', 'bathroom1-4.jpg']
         },
         warm_hall: {
           title: 'Тёплые сенки',
-          photos: [
-            'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['warm_hall1-1.jpg', 'warm_hall1-2.jpg', 'warm-hall1_3.jpg']
         },
         garage1: {
           title: 'Гараж 1',
-          photos: [
-            'https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['garage1-1.jpg', 'garage1-2.jpg', 'garage1-3.jpg', 'garage1-4.jpg']
         },
         garage2: {
           title: 'Гараж 2',
-          photos: [
-            'https://images.unsplash.com/photo-1600566753086-00f18f6b0050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['garage2-1.jpg', 'garage2-2.jpg', 'garage2-3.jpg', 'garage2-4.jpg', 'garage2-5.jpg']
         },
         banya: {
           title: 'Баня',
-          photos: [
-            'https://images.unsplash.com/photo-1533044309907-0fa3413da946?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['banya1-1.jpg', 'banya1-2.jpg', 'banya1-3.jpg', 'banya1-4.jpg', 'banya1-5.jpg', 'banya1-6.jpg']
         },
         living_garage: {
           title: 'Жилая комната над гаражом 1',
-          photos: [
-            'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-          ]
+          photos: ['living_garage1-1.jpg', 'living_garage1-2.jpg', 'living_garage1-3.jpg', 'living_garage1-4.jpg', 'living_garage1-5.jpg', 'living_garage1-6.jpg']
         }
       };
 
+      let swiperInstance = null;
       const subtabButtons = document.querySelectorAll('.subtab-btn');
-      const galleryGrid = document.getElementById('galleryGrid');
+      const swiperWrapper = document.getElementById('swiperWrapper');
 
-      function renderGallery(subtabKey) {
-        const data = galleryData[subtabKey];
-        if (!data) return;
-        let html = '';
-        data.photos.forEach((src, idx) => {
-          html += `
-            <div class="gallery-card">
-              <img src="${src}" alt="${data.title} фото ${idx+1}" loading="lazy">
-              <div class="gallery-caption">${data.title} • деталь ${idx+1}</div>
-            </div>
-          `;
-        });
-        galleryGrid.innerHTML = html;
+      function destroySwiper() {
+        if (swiperInstance) {
+          swiperInstance.destroy(true, true);
+          swiperInstance = null;
+        }
       }
 
-      function setActiveSubtab(subtabKey) {
-        subtabButtons.forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.dataset.subtab === subtabKey) btn.classList.add('active');
+      function initSwiperForCurrentSubtab() {
+        const activeBtn = document.querySelector('.subtab-btn.active');
+        if (!activeBtn) return;
+        const key = activeBtn.dataset.subtab;
+        const data = galleryData[key];
+        if (!data) return;
+
+        destroySwiper();
+        swiperWrapper.innerHTML = data.photos.map((src, idx) => `
+          <div class="swiper-slide">
+            <img src="${src}" alt="${data.title} фото ${idx+1}" loading="lazy">
+            <div class="swiper-caption">${data.title} • фото ${idx+1}</div>
+          </div>
+        `).join('');
+
+        swiperInstance = new Swiper('#gallerySwiper', {
+          loop: true,
+          pagination: { el: '.swiper-pagination', clickable: true },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          spaceBetween: 10,
+          slidesPerView: 1,
         });
-        renderGallery(subtabKey);
+      }
+
+      function setActiveSubtab(key) {
+        subtabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.subtab === key));
+        initSwiperForCurrentSubtab();
       }
 
       subtabButtons.forEach(btn => {
@@ -601,10 +733,40 @@
         });
       });
 
-      // Показываем первый раздел галереи
-      if (subtabButtons.length > 0) {
-        setActiveSubtab('hall');
+      // Инициализация при открытии галереи
+      if (document.getElementById('gallery').classList.contains('active')) {
+        initSwiperForCurrentSubtab();
       }
+
+      // Счётчик просмотров (локальный)
+      (function() {
+        let views = localStorage.getItem('pageViews') || 0;
+        views++;
+        localStorage.setItem('pageViews', views);
+        document.getElementById('pageViews').textContent = 'Просмотров: ' + views;
+      })();
+
+      // В избранное
+      window.addToFavorites = function() {
+        alert('Нажмите ' + (navigator.userAgent.indexOf('Mac') != -1 ? 'Cmd+D' : 'Ctrl+D') + ' чтобы добавить страницу в закладки');
+      };
+
+      // Музыка
+      const musicBtn = document.getElementById('musicControl');
+      const musicIcon = document.getElementById('musicIcon');
+      const bgMusic = document.getElementById('bgMusic');
+      bgMusic.volume = 0.2;
+
+      musicBtn.addEventListener('click', () => {
+        if (bgMusic.paused) {
+          bgMusic.play().then(() => {
+            musicIcon.textContent = '⏸';
+          }).catch(e => console.log('Ошибка воспроизведения'));
+        } else {
+          bgMusic.pause();
+          musicIcon.textContent = '♪';
+        }
+      });
     })();
   </script>
 </body>
