@@ -55,7 +55,7 @@
       align-items: center;
       justify-content: flex-start;
       padding: 1.5rem 1rem 3rem;
-      -webkit-transform: translateZ(0); /* аппаратное ускорение */
+      -webkit-transform: translateZ(0);
     }
 
     :root {
@@ -69,7 +69,6 @@
       width: 100%;
       max-width: 1200px;
       background: var(--glass-bg);
-      /* убираем размытие на мобильных для плавности */
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
@@ -209,7 +208,7 @@
       aspect-ratio: 4/3;
     }
 
-    /* Галерея — возвращаем удобную сетку */
+    /* Галерея */
     .gallery-subtabs {
       display: flex;
       justify-content: center;
@@ -257,7 +256,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s;
       border: 1px solid rgba(255,255,255,0.1);
       background: #111;
-      cursor: default;
+      cursor: pointer;
     }
     .gallery-card:hover {
       transform: translateY(-8px);
@@ -277,6 +276,42 @@
       color: #ccc;
       text-align: center;
       background: rgba(0,0,0,0.7);
+    }
+
+    /* Лайтбокс */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 1.5rem;
+      box-shadow: 0 0 60px rgba(212,175,55,0.3);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 3rem;
+      color: var(--gold);
+      cursor: pointer;
+      z-index: 2001;
+      background: none;
+      border: none;
+      line-height: 1;
     }
 
     /* Контакты */
@@ -309,7 +344,6 @@
       font-size: 1.4rem;
     }
 
-    /* Карта — теперь квадратная и удобная */
     .map-container {
       flex: 1 1 280px;
       border-radius: 2rem;
@@ -322,14 +356,14 @@
       border: 0;
     }
 
-    /* WhatsApp floating button */
-    .whatsapp-float {
+    /* Кнопка Макс (замена WhatsApp) */
+    .max-float {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       width: 60px;
       height: 60px;
-      background-color: #25D366;
+      background-color: #005FF9;  /* фирменный синий Mail.ru */
       border-radius: 50%;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5);
       display: flex;
@@ -337,13 +371,18 @@
       justify-content: center;
       z-index: 1000;
       transition: transform 0.3s;
+      text-decoration: none;
     }
-    .whatsapp-float:hover {
+    .max-float:hover {
       transform: scale(1.1);
     }
-    .whatsapp-float img {
-      width: 35px;
-      height: 35px;
+    .max-float span {
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1;
+      user-select: none;
     }
 
     /* Кнопка Позвонить (мобильная) */
@@ -364,9 +403,7 @@
       text-decoration: none;
       box-shadow: 0 -5px 15px rgba(0,0,0,0.4);
     }
-    .call-mobile span {
-      margin-right: 0.5rem;
-    }
+    .call-mobile span { margin-right: 0.5rem; }
 
     /* Кнопка В избранное */
     .fav-btn {
@@ -395,6 +432,28 @@
       font-size: 0.9rem;
       color: #999;
       margin-top: 1.5rem;
+    }
+
+    /* Тост (уведомление) */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #0a0a0a;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      z-index: 3000;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .toast.show {
+      opacity: 1;
     }
 
     /* Бургер */
@@ -429,7 +488,7 @@
       .main-container {
         padding: 1.8rem 1.2rem;
         border-radius: 2rem;
-        backdrop-filter: none;           /* убираем размытие на мобильных */
+        backdrop-filter: none;
         -webkit-backdrop-filter: none;
         background: rgba(20,20,20,0.85);
       }
@@ -446,8 +505,8 @@
         gap: 1rem;
       }
       .gallery-card img { height: 180px; }
-      .whatsapp-float { bottom: 5rem; right: 1.5rem; width: 50px; height: 50px; }
-      .whatsapp-float img { width: 28px; height: 28px; }
+      .max-float { bottom: 5rem; right: 1.5rem; width: 50px; height: 50px; }
+      .max-float span { font-size: 24px; }
       .call-mobile { display: block; }
     }
 
@@ -539,23 +598,32 @@
           <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
         </div>
         <div class="map-container">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa562effe5c9328ee4a45e8c59fd6e93eeef96d9aa70dfe0c8fb1187983cea839&amp;source=constructor"></iframe>
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2e3d1f756beed1dce80ba7a9982bb348f3ec3fa41f496d047a9016361b8e6966&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/79966090812?text=Здравствуйте%2C+интересует+дом+на+Набережной" class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  <!-- Лайтбокс -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img src="" id="lightboxImg" alt="Полноэкранное фото">
+  </div>
+
+  <!-- Кнопка Макс (мессенджер) -->
+  <a href="https://max.ru/chat?phone=79966090812" class="max-float" target="_blank" title="Написать в Макс">
+    <span>M</span>
   </a>
 
   <!-- Кнопка Позвонить (мобильная) -->
   <a href="tel:+79966090812" class="call-mobile"><span>📞</span> Позвонить</a>
 
+  <!-- Тост -->
+  <div id="toast" class="toast"></div>
+
   <script>
     (function() {
-      // Переключение главных вкладок
+      // --- Переключение главных вкладок ---
       const tabButtons = document.querySelectorAll('.nav-btn');
       const tabContents = document.querySelectorAll('.tab-content');
       const mobileNav = document.getElementById('mobileNav');
@@ -583,7 +651,7 @@
         }
       });
 
-      // Галерея с вашими фото
+      // --- Галерея ---
       const galleryData = {
         hall: {
           title: 'Зал',
@@ -611,7 +679,7 @@
         },
         warm_hall: {
           title: 'Тёплые сенки',
-          photos: ['warm_hall1-1.jpg', 'warm-hall1-2.jpg', 'warm-hall1-3.jpg']  // проверьте дефисы
+          photos: ['warm_hall1-1.jpg', 'warm-hall1-2.jpg', 'warm-hall1-3.jpg']
         },
         garage1: {
           title: 'Гараж 1',
@@ -627,12 +695,33 @@
         },
         living_garage: {
           title: 'Жилая комната над гаражом 1',
-          photos: ['living_garage1-1.jpg', 'living_garage1-2.jpg', 'living-garage1-3.jpg', 'living_garage1-4.jpg', 'living_garage1-5.jpg', 'living_garage1-6.jpg']  // проверьте дефис в 3-м файле
+          photos: ['living_garage1-1.jpg', 'living_garage1-2.jpg', 'living-garage1-3.jpg', 'living_garage1-4.jpg', 'living_garage1-5.jpg', 'living_garage1-6.jpg']
         }
       };
 
       const subtabButtons = document.querySelectorAll('.subtab-btn');
       const galleryGrid = document.getElementById('galleryGrid');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      // Лайтбокс
+      function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+      }
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+      }
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
 
       function renderGallery(subtabKey) {
         const data = galleryData[subtabKey];
@@ -647,6 +736,13 @@
           `;
         });
         galleryGrid.innerHTML = html;
+
+        document.querySelectorAll('.gallery-card').forEach(card => {
+          card.addEventListener('click', function(e) {
+            const img = this.querySelector('img');
+            if (img) openLightbox(img.src);
+          });
+        });
       }
 
       function renderGalleryForActiveSubtab() {
@@ -665,12 +761,11 @@
         });
       });
 
-      // Инициализация при загрузке галереи
       if (document.getElementById('gallery').classList.contains('active')) {
         renderGalleryForActiveSubtab();
       }
 
-      // Счётчик просмотров
+      // --- Счётчик просмотров ---
       (function() {
         let views = localStorage.getItem('pageViews') || 0;
         views++;
@@ -678,10 +773,24 @@
         document.getElementById('pageViews').textContent = 'Просмотров: ' + views;
       })();
 
-      // В избранное
+      // --- Кнопка В избранное (умная) ---
       window.addToFavorites = function() {
-        alert('Нажмите ' + (navigator.userAgent.indexOf('Mac') != -1 ? 'Cmd+D' : 'Ctrl+D') + ' чтобы добавить страницу в закладки');
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('✅ Ссылка скопирована! Нажмите Ctrl+D (Mac: Cmd+D), чтобы добавить в закладки');
+        }).catch(() => {
+          showToast('⭐ Нажмите Ctrl+D (Mac: Cmd+D), чтобы добавить страницу в закладки');
+        });
       };
+
+      function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3500);
+      }
     })();
   </script>
 </body>
