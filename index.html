@@ -11,7 +11,7 @@
     "@context": "https://schema.org",
     "@type": "RealEstateListing",
     "name": "Дом на Набережной",
-    "description": "Продаётся полностью благоустроенный дом 108 м² в Кызыле, на берегу Енисея.",
+    "description": "Продаётся полублагоустроенный дом 108 м² в Кызыле, на берегу Енисея.",
     "telephone": "+79966090812",
     "address": {
       "@type": "PostalAddress",
@@ -576,19 +576,20 @@
       <div class="about-grid">
         <div class="about-text">
           <h2>Информация к прочтению.</h2>
-          <p>Продаётся полностью благоустроенный дом площадью 108 м².</p>
+          <p>Продаётся полублагоустроенный дом площадью 108 м².</p>
           <p>В минуте ходьбы — живописный берег реки Енисей, а также всё, что нужно для комфортной жизни: магазины, детский сад, школа, тренажёрный зал, пункты выдачи, почта и больница.</p>
           <p>Вокруг — доброжелательные и порядочные соседи. Новая дорога и современное уличное освещение довершают образ идеального места для спокойной и удобной жизни.</p>
           <div class="about-features">
-            <span class="feature-item">Дом 108 м²</span>
-            <span class="feature-item">Территория 6 соток</span>
-            <span class="feature-item">2 гаража</span>
-            <span class="feature-item">Баня</span>
-            <span class="feature-item">Над гаражом жилая комната</span>
+            <span class="feature-item">Дом 108 м².</span>
+            <span class="feature-item">Территория 6 соток.</span>
+            <span class="feature-item">Два гаража.</span>
+            <span class="feature-item">Баня.</span>
+            <span class="feature-item">Над гаражом жилая комната.</span>
+			<span class="feature-item">Реальным покупателя приятный бонус.</span>
           </div>
         </div>
         <div class="about-image">
-          <img src="https://picsum.photos/id/104/800/600" alt="Фасад дома на Набережной" loading="lazy">
+          <img src="main-house.jpg" alt="Фасад дома на Набережной" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/id/104/800/600';">
         </div>
       </div>
       <button class="fav-btn" id="favBtn" type="button">⭐ В избранное</button>
@@ -650,22 +651,21 @@
 
 <script>
   (function() {
-    // --- data for gallery (all images from picsum, unique ids)
+    // Исходные названия файлов, как в первом варианте
     const galleryData = {
-      hall: { title: 'Зал', photos: ['https://picsum.photos/id/106/800/600', 'https://picsum.photos/id/107/800/600'] },
-      room1: { title: 'Комната 1', photos: ['https://picsum.photos/id/108/800/600', 'https://picsum.photos/id/109/800/600', 'https://picsum.photos/id/110/800/600'] },
-      room2: { title: 'Комната 2', photos: ['https://picsum.photos/id/111/800/600', 'https://picsum.photos/id/112/800/600', 'https://picsum.photos/id/113/800/600'] },
-      room3: { title: 'Комната 3', photos: ['https://picsum.photos/id/114/800/600', 'https://picsum.photos/id/115/800/600', 'https://picsum.photos/id/116/800/600'] },
-      kitchen: { title: 'Кухня', photos: ['https://picsum.photos/id/117/800/600', 'https://picsum.photos/id/118/800/600', 'https://picsum.photos/id/119/800/600', 'https://picsum.photos/id/120/800/600'] },
-      bathroom: { title: 'Ванная комната', photos: ['https://picsum.photos/id/121/800/600', 'https://picsum.photos/id/122/800/600', 'https://picsum.photos/id/123/800/600', 'https://picsum.photos/id/124/800/600'] },
-      warm_hall: { title: 'Тёплые сенки', photos: ['https://picsum.photos/id/125/800/600', 'https://picsum.photos/id/126/800/600', 'https://picsum.photos/id/127/800/600'] },
-      garage1: { title: 'Гараж 1', photos: ['https://picsum.photos/id/128/800/600', 'https://picsum.photos/id/129/800/600', 'https://picsum.photos/id/130/800/600', 'https://picsum.photos/id/131/800/600'] },
-      garage2: { title: 'Гараж 2', photos: ['https://picsum.photos/id/132/800/600', 'https://picsum.photos/id/133/800/600', 'https://picsum.photos/id/134/800/600', 'https://picsum.photos/id/135/800/600', 'https://picsum.photos/id/136/800/600'] },
-      banya: { title: 'Баня', photos: ['https://picsum.photos/id/137/800/600', 'https://picsum.photos/id/138/800/600', 'https://picsum.photos/id/139/800/600', 'https://picsum.photos/id/140/800/600', 'https://picsum.photos/id/141/800/600', 'https://picsum.photos/id/142/800/600'] },
-      living_garage: { title: 'Жилая комната над гаражом 1', photos: ['https://picsum.photos/id/143/800/600', 'https://picsum.photos/id/144/800/600', 'https://picsum.photos/id/145/800/600', 'https://picsum.photos/id/146/800/600', 'https://picsum.photos/id/147/800/600', 'https://picsum.photos/id/148/800/600'] }
+      hall: { title: 'Зал', photos: ['hall1-1.jpg', 'hall1-2.jpg'] },
+      room1: { title: 'Комната 1', photos: ['room1-1.jpg', 'room1-2.jpg', 'room1-3.jpg'] },
+      room2: { title: 'Комната 2', photos: ['room2-1.jpg', 'room2-2.jpg', 'room2-3.jpg'] },
+      room3: { title: 'Комната 3', photos: ['room3-1.jpg', 'room3-2.jpg', 'room3-3.jpg'] },
+      kitchen: { title: 'Кухня', photos: ['kitchen1-1.jpg', 'kitchen1-2.jpg', 'kitchen1-3.jpg', 'kitchen1-4.jpg'] },
+      bathroom: { title: 'Ванная комната', photos: ['bathroom1-1.jpg', 'bathroom1-2.jpg', 'bathroom1-3.jpg', 'bathroom1-4.jpg'] },
+      warm_hall: { title: 'Тёплые сенки', photos: ['warm_hall1-1.jpg', 'warm_hall1-2.jpg', 'warm_hall1-3.jpg'] },
+      garage1: { title: 'Гараж 1', photos: ['garage1-1.jpg', 'garage1-2.jpg', 'garage1-3.jpg', 'garage1-4.jpg'] },
+      garage2: { title: 'Гараж 2', photos: ['garage2-1.jpg', 'garage2-2.jpg', 'garage2-3.jpg', 'garage2-4.jpg', 'garage2-5.jpg'] },
+      banya: { title: 'Баня', photos: ['banya1-1.jpg', 'banya1-2.jpg', 'banya1-3.jpg', 'banya1-4.jpg', 'banya1-5.jpg', 'banya1-6.jpg'] },
+      living_garage: { title: 'Жилая комната над гаражом 1', photos: ['living_garage1-1.jpg', 'living_garage1-2.jpg', 'living_garage1-3.jpg', 'living_garage1-4.jpg', 'living_garage1-5.jpg', 'living_garage1-6.jpg'] }
     };
 
-    // DOM elements
     const tabBtns = document.querySelectorAll('.nav-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     const mobileNav = document.getElementById('mobileNav');
@@ -684,7 +684,6 @@
     let currentIndex = 0;
     let lastFocusedElement = null;
 
-    // Scroll lock helpers
     let scrollY = 0;
     function lockScroll() {
       scrollY = window.scrollY || document.documentElement.scrollTop || 0;
@@ -699,7 +698,6 @@
       window.scrollTo(0, y);
     }
 
-    // Main tabs
     function setActiveTab(tabId) {
       tabBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
       tabContents.forEach(tc => tc.classList.toggle('active', tc.id === tabId));
@@ -712,7 +710,6 @@
       btn.addEventListener('click', (e) => setActiveTab(e.currentTarget.dataset.tab));
     });
 
-    // Burger menu
     burgerBtn.addEventListener('click', () => {
       const isOpen = mobileNav.classList.toggle('open');
       burgerBtn.setAttribute('aria-expanded', String(isOpen));
@@ -728,7 +725,6 @@
       }
     });
 
-    // Gallery rendering
     function renderGallery(subtabKey) {
       const data = galleryData[subtabKey];
       if (!data) {
@@ -738,7 +734,7 @@
       const photos = data.photos || [];
       galleryGrid.innerHTML = photos.map((src, idx) => `
         <div class="gallery-card" role="button" tabindex="0" data-idx="${idx}" data-src="${src}">
-          <img src="${src}" alt="${data.title} — фото ${idx+1}" loading="lazy" onerror="this.src='https://picsum.photos/id/1/400/300'">
+          <img src="${src}" alt="${data.title} — фото ${idx+1}" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/id/1/400/300';">
           <div class="gallery-caption">${data.title} • фото ${idx+1}</div>
         </div>
       `).join('');
@@ -770,7 +766,6 @@
     }
     subtabBtns.forEach(btn => btn.addEventListener('click', (e) => setActiveSubtab(e.currentTarget.dataset.subtab)));
 
-    // Lightbox logic with focus return
     function openLightbox(photosArray, index, triggeredElement) {
       if (!photosArray || photosArray.length === 0) return;
       currentPhotos = photosArray;
@@ -833,7 +828,6 @@
       if (e.key === 'ArrowLeft') showPrev();
     });
 
-    // Favorites + toast
     function showToastMessage(msg) {
       toast.textContent = msg;
       toast.classList.add('show');
