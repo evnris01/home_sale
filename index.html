@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Дом на Набережной — продажа</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%A0%3C/text%3E%3C/svg%3E" type="image/svg+xml">
 
-  <!-- Favicon (золотой домик) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>" type="image/svg+xml">
-
-  <!-- Микроразметка Schema.org -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Residence",
-      "name": "Дом на Набережной",
-      "description": "Продаётся полублагоустроенный дом 108 м² в Кызыле, на берегу Енисея.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "ул. Набережная, д. 74",
-        "addressLocality": "Кызыл",
-        "addressCountry": "RU"
-      },
-      "telephone": "+7-996-609-08-12",
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": "Дом на Набережной",
+    "description": "Продаётся полностью благоустроенный дом 108 м² в Кызыле, на берегу Енисея.",
+    "telephone": "+79966090812",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Набережная, д. 74",
+      "addressLocality": "Кызыл",
+      "addressRegion": "Республика Тыва",
+      "addressCountry": "RU"
+    },
+    "about": {
+      "@type": "SingleFamilyResidence",
       "floorSize": {
         "@type": "QuantitativeValue",
         "value": 108,
         "unitCode": "MTK"
       }
     }
+  }
   </script>
 
-  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F3E1A4;
+      --glass-bg: rgba(20, 20, 20, 0.7);
+      --glass-border: rgba(212, 175, 55, 0.25);
+    }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -45,7 +52,7 @@
       min-height: 100vh;
       background-image:
         linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(10,10,10,0.75) 100%),
-        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=75');
       background-size: cover;
       background-position: center 40%;
       background-attachment: fixed;
@@ -55,20 +62,14 @@
       align-items: center;
       justify-content: flex-start;
       padding: 1.5rem 1rem 3rem;
-      -webkit-transform: translateZ(0);
-      touch-action: manipulation;
     }
+
     body.no-scroll {
       overflow: hidden;
       position: fixed;
       width: 100%;
-    }
-
-    :root {
-      --gold: #D4AF37;
-      --gold-light: #F3E1A4;
-      --glass-bg: rgba(20, 20, 20, 0.7);
-      --glass-border: rgba(212, 175, 55, 0.25);
+      left: 0;
+      right: 0;
     }
 
     .main-container {
@@ -98,9 +99,8 @@
       text-shadow: 0 0 30px rgba(212,175,55,0.4), 0 5px 15px rgba(0,0,0,0.6);
       line-height: 1.2;
       margin-bottom: 0.25rem;
-      word-break: break-word;
-      hyphens: auto;
     }
+
     .site-subtitle {
       text-align: center;
       font-weight: 300;
@@ -111,7 +111,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Навигация */
     .nav-tabs {
       display: flex;
       justify-content: center;
@@ -121,8 +120,9 @@
       padding-bottom: 1.2rem;
       margin-bottom: 0.5rem;
     }
+
     .nav-btn {
-      background: transparent;
+      background: rgba(255,255,255,0.03);
       border: 1px solid transparent;
       color: #ccc;
       font-family: 'Playfair Display', serif;
@@ -134,15 +134,15 @@
       cursor: pointer;
       transition: all 0.2s ease;
       text-transform: uppercase;
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(4px);
     }
+
     .nav-btn:hover {
       color: #fff;
       border-color: var(--gold);
       background: rgba(212,175,55,0.1);
       box-shadow: 0 0 20px rgba(212,175,55,0.2);
     }
+
     .nav-btn.active {
       background: var(--gold);
       color: #0a0a0a;
@@ -151,27 +151,38 @@
       font-weight: 700;
     }
 
-    /* Контент вкладок */
-    .tab-content {
-      display: none;
+    .nav-btn:focus-visible,
+    .subtab-btn:focus-visible,
+    .burger:focus-visible,
+    .lightbox-close:focus-visible,
+    .lightbox-arrow:focus-visible,
+    .fav-btn:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(212,175,55,0.55);
+      outline-offset: 3px;
+      border-radius: 999px;
     }
+
+    .tab-content { display: none; }
     .tab-content.active {
       display: block;
-      animation: fadeSlide 0.4s ease;
+      animation: fadeSlide 0.3s ease;
     }
+
     @keyframes fadeSlide {
       0% { opacity: 0; transform: translateY(12px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* О доме */
     .about-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 2.5rem;
       align-items: center;
     }
+
     .about-text { flex: 1 1 300px; }
+
     .about-text h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
@@ -179,18 +190,21 @@
       margin-bottom: 1.2rem;
       font-weight: 600;
     }
+
     .about-text p {
       font-weight: 300;
       line-height: 1.8;
       margin-bottom: 1.2rem;
       color: #d0d0d0;
     }
+
     .about-features {
       display: flex;
       flex-wrap: wrap;
       gap: 1.2rem;
       margin-top: 1.5rem;
     }
+
     .feature-item {
       background: rgba(212,175,55,0.08);
       border: 1px solid rgba(212,175,55,0.25);
@@ -200,12 +214,14 @@
       letter-spacing: 0.05em;
       color: var(--gold-light);
     }
+
     .about-image {
       flex: 1 1 280px;
       border-radius: 2rem;
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 1px rgba(212,175,55,0.2);
     }
+
     .about-image img {
       width: 100%;
       height: auto;
@@ -214,7 +230,6 @@
       aspect-ratio: 4/3;
     }
 
-    /* Галерея */
     .gallery-subtabs {
       display: flex;
       justify-content: center;
@@ -222,8 +237,9 @@
       flex-wrap: wrap;
       margin-bottom: 2rem;
     }
+
     .subtab-btn {
-      background: transparent;
+      background: rgba(20,20,20,0.5);
       border: 1px solid rgba(255,255,255,0.15);
       color: #ccc;
       font-family: 'Montserrat', sans-serif;
@@ -235,13 +251,13 @@
       border-radius: 2rem;
       cursor: pointer;
       transition: 0.2s;
-      background: rgba(20,20,20,0.5);
-      backdrop-filter: blur(4px);
     }
+
     .subtab-btn:hover {
       border-color: var(--gold);
       color: #fff;
     }
+
     .subtab-btn.active {
       background: var(--gold);
       color: #0a0a0a;
@@ -255,6 +271,7 @@
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
     }
+
     .gallery-card {
       border-radius: 1.5rem;
       overflow: hidden;
@@ -263,19 +280,21 @@
       border: 1px solid rgba(255,255,255,0.1);
       background: #111;
       cursor: pointer;
-      touch-action: manipulation;
     }
+
     .gallery-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 25px 40px rgba(212,175,55,0.25);
       border-color: var(--gold);
     }
+
     .gallery-card img {
       width: 100%;
       height: 220px;
       object-fit: cover;
       display: block;
     }
+
     .gallery-caption {
       padding: 0.7rem 1rem;
       font-weight: 400;
@@ -285,22 +304,18 @@
       background: rgba(0,0,0,0.7);
     }
 
-    /* Лайтбокс – надёжное центрирование */
     .lightbox {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: rgba(0,0,0,0.92);
       z-index: 2000;
       justify-content: center;
       align-items: center;
     }
-    .lightbox.active {
-      display: flex;
-    }
+
+    .lightbox.active { display: flex; }
+
     .lightbox img {
       display: block;
       max-width: 90%;
@@ -310,8 +325,9 @@
       object-fit: contain;
       border-radius: 1.5rem;
       box-shadow: 0 0 60px rgba(212,175,55,0.3);
-      transition: opacity 0.3s;
+      transition: opacity 0.2s;
     }
+
     .lightbox-close {
       position: absolute;
       top: 2rem;
@@ -319,11 +335,11 @@
       font-size: 3rem;
       color: var(--gold);
       cursor: pointer;
-      z-index: 2001;
       background: none;
       border: none;
       line-height: 1;
     }
+
     .lightbox-arrow {
       position: absolute;
       top: 50%;
@@ -333,43 +349,46 @@
       background: none;
       border: none;
       cursor: pointer;
-      z-index: 2001;
       padding: 1rem;
       transition: 0.2s;
-      user-select: none;
     }
+
     .lightbox-arrow:hover {
       color: #fff;
       text-shadow: 0 0 15px rgba(212,175,55,0.7);
     }
+
     .lightbox-arrow.left { left: 1rem; }
     .lightbox-arrow.right { right: 1rem; }
 
-    /* Контакты */
     .contacts-wrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 2.5rem;
       align-items: flex-start;
     }
+
     .contact-info {
       flex: 1 1 260px;
       font-weight: 300;
       font-size: 1.1rem;
       line-height: 2;
     }
+
     .contact-info h2 {
       font-family: 'Playfair Display', serif;
       color: var(--gold);
       font-size: 2.2rem;
       margin-bottom: 1.2rem;
     }
+
     .contact-detail {
       display: flex;
       align-items: center;
       gap: 0.7rem;
       margin-bottom: 0.8rem;
     }
+
     .gold-icon { color: var(--gold); font-size: 1.4rem; }
 
     .map-container {
@@ -378,13 +397,9 @@
       overflow: hidden;
       box-shadow: 0 15px 30px rgba(0,0,0,0.7);
     }
-    .map-container iframe {
-      width: 100%;
-      height: 400px;
-      border: 0;
-    }
 
-    /* Кнопка Макс */
+    .map-container iframe { width: 100%; height: 400px; border: 0; }
+
     .max-float {
       position: fixed;
       bottom: 2rem;
@@ -401,10 +416,10 @@
       transition: transform 0.3s;
       text-decoration: none;
     }
+
     .max-float:hover { transform: scale(1.1); }
     .max-float svg { width: 36px; height: 36px; }
 
-    /* Кнопка Позвонить (мобильная) */
     .call-mobile {
       display: none;
       position: fixed;
@@ -422,9 +437,9 @@
       text-decoration: none;
       box-shadow: 0 -5px 15px rgba(0,0,0,0.4);
     }
+
     .call-mobile span { margin-right: 0.5rem; }
 
-    /* Кнопка В избранное */
     .fav-btn {
       background: transparent;
       border: 1px solid var(--gold);
@@ -440,9 +455,9 @@
       transition: 0.3s;
       margin-top: 1rem;
     }
+
     .fav-btn:hover { background: var(--gold); color: #0a0a0a; }
 
-    /* Тост */
     .toast {
       position: fixed;
       bottom: 2rem;
@@ -459,10 +474,13 @@
       transition: opacity 0.3s;
       pointer-events: none;
       white-space: nowrap;
+      max-width: calc(100vw - 2rem);
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
     .toast.show { opacity: 1; }
 
-    /* Бургер */
     .burger {
       display: none;
       flex-direction: column;
@@ -474,6 +492,7 @@
       z-index: 20;
       align-self: center;
     }
+
     .burger span {
       width: 28px;
       height: 2px;
@@ -485,18 +504,15 @@
     .desktop-nav { display: flex; }
     .mobile-nav { display: none; flex-direction: column; width: 100%; gap: 0.3rem; margin-top: 1rem; }
 
-    /* Адаптивность */
     @media (max-width: 768px) {
       body {
         background-attachment: scroll;
         padding: 0.8rem 0.5rem 2rem;
-        -webkit-overflow-scrolling: touch;
       }
       .main-container {
         padding: 1.8rem 1.2rem;
         border-radius: 2rem;
         backdrop-filter: none;
-        -webkit-backdrop-filter: none;
         background: rgba(20,20,20,0.85);
       }
       .burger { display: flex; }
@@ -525,37 +541,42 @@
       .mobile-nav { display: none; }
       .call-mobile { display: none; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
+
 <body>
-  <div class="main-container">
-    <div>
-      <h1 class="site-title">ДОМ НА НАБЕРЕЖНОЙ</h1>
-      <p class="site-subtitle">Дом, где комфорт становится образом жизни.</p>
-    </div>
+<div class="main-container">
+  <header>
+    <h1 class="site-title">ДОМ НА НАБЕРЕЖНОЙ</h1>
+    <p class="site-subtitle">Дом, где комфорт становится образом жизни.</p>
+  </header>
 
-    <button class="burger" id="burgerBtn" aria-label="Меню">
-      <span></span><span></span><span></span>
-    </button>
+  <button class="burger" id="burgerBtn" aria-label="Меню" aria-controls="mobileNav" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 
-    <!-- Навигация -->
-    <div class="nav-tabs desktop-nav" id="desktopNav">
-      <button class="nav-btn active" data-tab="about">О Доме</button>
-      <button class="nav-btn" data-tab="gallery">Галерея</button>
-      <button class="nav-btn" data-tab="contacts">Контакты</button>
-    </div>
-    <div class="nav-tabs mobile-nav" id="mobileNav">
-      <button class="nav-btn active" data-tab="about">О Доме</button>
-      <button class="nav-btn" data-tab="gallery">Галерея</button>
-      <button class="nav-btn" data-tab="contacts">Контакты</button>
-    </div>
+  <nav class="nav-tabs desktop-nav" id="desktopNav">
+    <button class="nav-btn active" data-tab="about" type="button">О Доме</button>
+    <button class="nav-btn" data-tab="gallery" type="button">Галерея</button>
+    <button class="nav-btn" data-tab="contacts" type="button">Контакты</button>
+  </nav>
 
-    <!-- Вкладка О доме -->
-    <div id="about" class="tab-content active">
+  <nav class="nav-tabs mobile-nav" id="mobileNav">
+    <button class="nav-btn active" data-tab="about" type="button">О Доме</button>
+    <button class="nav-btn" data-tab="gallery" type="button">Галерея</button>
+    <button class="nav-btn" data-tab="contacts" type="button">Контакты</button>
+  </nav>
+
+  <main>
+    <section id="about" class="tab-content active">
       <div class="about-grid">
         <div class="about-text">
           <h2>Информация к прочтению.</h2>
-          <p>Продаётся полублагоустроенный дом площадью 108 м².</p>
+          <p>Продаётся полностью благоустроенный дом площадью 108 м².</p>
           <p>В минуте ходьбы — живописный берег реки Енисей, а также всё, что нужно для комфортной жизни: магазины, детский сад, школа, тренажёрный зал, пункты выдачи, почта и больница.</p>
           <p>Вокруг — доброжелательные и порядочные соседи. Новая дорога и современное уличное освещение довершают образ идеального места для спокойной и удобной жизни.</p>
           <div class="about-features">
@@ -567,239 +588,283 @@
           </div>
         </div>
         <div class="about-image">
-          <img src="main-house.jpg" alt="Фасад дома на Набережной" loading="lazy">
+          <img src="https://picsum.photos/id/104/800/600" alt="Фасад дома на Набережной" loading="lazy">
         </div>
       </div>
+      <button class="fav-btn" id="favBtn" type="button">⭐ В избранное</button>
+    </section>
 
-      <button class="fav-btn" onclick="addToFavorites()">⭐ В избранное</button>
-    </div>
-
-    <!-- Галерея -->
-    <div id="gallery" class="tab-content">
+    <section id="gallery" class="tab-content">
       <div class="gallery-subtabs" id="gallerySubtabs">
-        <button class="subtab-btn active" data-subtab="hall">Зал</button>
-        <button class="subtab-btn" data-subtab="room1">Комната 1</button>
-        <button class="subtab-btn" data-subtab="room2">Комната 2</button>
-        <button class="subtab-btn" data-subtab="room3">Комната 3</button>
-        <button class="subtab-btn" data-subtab="kitchen">Кухня</button>
-        <button class="subtab-btn" data-subtab="bathroom">Ванная</button>
-        <button class="subtab-btn" data-subtab="warm_hall">Тёплые сенки</button>
-        <button class="subtab-btn" data-subtab="garage1">Гараж 1</button>
-        <button class="subtab-btn" data-subtab="garage2">Гараж 2</button>
-        <button class="subtab-btn" data-subtab="banya">Баня</button>
-        <button class="subtab-btn" data-subtab="living_garage">Жилая комната над гаражом 1</button>
+        <button class="subtab-btn active" data-subtab="hall" type="button">Зал</button>
+        <button class="subtab-btn" data-subtab="room1" type="button">Комната 1</button>
+        <button class="subtab-btn" data-subtab="room2" type="button">Комната 2</button>
+        <button class="subtab-btn" data-subtab="room3" type="button">Комната 3</button>
+        <button class="subtab-btn" data-subtab="kitchen" type="button">Кухня</button>
+        <button class="subtab-btn" data-subtab="bathroom" type="button">Ванная</button>
+        <button class="subtab-btn" data-subtab="warm_hall" type="button">Тёплые сенки</button>
+        <button class="subtab-btn" data-subtab="garage1" type="button">Гараж 1</button>
+        <button class="subtab-btn" data-subtab="garage2" type="button">Гараж 2</button>
+        <button class="subtab-btn" data-subtab="banya" type="button">Баня</button>
+        <button class="subtab-btn" data-subtab="living_garage" type="button">Жилая комната над гаражом 1</button>
       </div>
-
       <div class="gallery-grid" id="galleryGrid"></div>
-    </div>
+    </section>
 
-    <!-- Контакты -->
-    <div id="contacts" class="tab-content">
+    <section id="contacts" class="tab-content">
       <div class="contacts-wrapper">
         <div class="contact-info">
           <h2>Свяжитесь с нами</h2>
           <div class="contact-detail"><span class="gold-icon">📍</span> г. Кызыл, ул. Набережная д. 74</div>
           <div class="contact-detail">
             <span class="gold-icon">📞</span>
-            <a href="tel:+79966090812" style="color: #D4AF37; text-decoration: none;">+7-996-609-08-12</a>
+            <a href="tel:+79966090812" style="color: #D4AF37; text-decoration: none;">+7 996 609-08-12</a>
           </div>
           <p style="margin-top:1.8rem; font-style:italic; color:#b0b0b0;">Частный показ по предварительной записи</p>
         </div>
         <div class="map-container">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A2e3d1f756beed1dce80ba7a9982bb348f3ec3fa41f496d047a9016361b8e6966&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+          <iframe loading="lazy" src="https://yandex.ru/map-widget/v1/?um=constructor%3A2e3d1f756beed1dce80ba7a9982bb348f3ec3fa41f496d047a9016361b8e6966&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
+</div>
 
-  <!-- Лайтбокс -->
-  <div id="lightbox" class="lightbox">
-    <button class="lightbox-close" id="lightboxClose">&times;</button>
-    <button class="lightbox-arrow left" id="lightboxPrev">&#10094;</button>
-    <button class="lightbox-arrow right" id="lightboxNext">&#10095;</button>
-    <img src="" id="lightboxImg" alt="Полноэкранное фото">
-  </div>
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Закрыть">&times;</button>
+  <button class="lightbox-arrow left" id="lightboxPrev" type="button" aria-label="Предыдущее фото">&#10094;</button>
+  <button class="lightbox-arrow right" id="lightboxNext" type="button" aria-label="Следующее фото">&#10095;</button>
+  <img src="" id="lightboxImg" alt="Полноэкранное фото">
+</div>
 
-  <!-- Кнопка Макс с логотипом -->
-  <a href="https://max.ru/u/f9LHodD0cOIcOk3gdwyGMuwSvlQGE7hPiqoi5RZB8WQOFBvq5_3SKFMlfik" class="max-float" target="_blank" title="Написать в Макс">
-    <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24" r="24" fill="#005FF9"/>
-      <text x="24" y="32" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">M</text>
-    </svg>
-  </a>
+<a href="https://max.ru/u/f9LHodD0cOIcOk3gdwyGMuwSvlQGE7hPiqoi5RZB8WQOFBvq5_3SKFMlfik" class="max-float" target="_blank" rel="noopener noreferrer" title="Написать в Макс">
+  <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="24" cy="24" r="24" fill="#005FF9"/>
+    <text x="24" y="32" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">M</text>
+  </svg>
+</a>
 
-  <!-- Кнопка Позвонить (мобильная) -->
-  <a href="tel:+79966090812" class="call-mobile"><span>📞</span> Позвонить</a>
+<a href="tel:+79966090812" class="call-mobile"><span>📞</span> Позвонить</a>
 
-  <!-- Тост -->
-  <div id="toast" class="toast"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <!-- Скрипты -->
-  <script>
-    (function() {
-      // --- Переключение главных вкладок ---
-      const tabButtons = document.querySelectorAll('.nav-btn');
-      const tabContents = document.querySelectorAll('.tab-content');
-      const mobileNav = document.getElementById('mobileNav');
-      const burgerBtn = document.getElementById('burgerBtn');
+<script>
+  (function() {
+    // --- data for gallery (all images from picsum, unique ids)
+    const galleryData = {
+      hall: { title: 'Зал', photos: ['https://picsum.photos/id/106/800/600', 'https://picsum.photos/id/107/800/600'] },
+      room1: { title: 'Комната 1', photos: ['https://picsum.photos/id/108/800/600', 'https://picsum.photos/id/109/800/600', 'https://picsum.photos/id/110/800/600'] },
+      room2: { title: 'Комната 2', photos: ['https://picsum.photos/id/111/800/600', 'https://picsum.photos/id/112/800/600', 'https://picsum.photos/id/113/800/600'] },
+      room3: { title: 'Комната 3', photos: ['https://picsum.photos/id/114/800/600', 'https://picsum.photos/id/115/800/600', 'https://picsum.photos/id/116/800/600'] },
+      kitchen: { title: 'Кухня', photos: ['https://picsum.photos/id/117/800/600', 'https://picsum.photos/id/118/800/600', 'https://picsum.photos/id/119/800/600', 'https://picsum.photos/id/120/800/600'] },
+      bathroom: { title: 'Ванная комната', photos: ['https://picsum.photos/id/121/800/600', 'https://picsum.photos/id/122/800/600', 'https://picsum.photos/id/123/800/600', 'https://picsum.photos/id/124/800/600'] },
+      warm_hall: { title: 'Тёплые сенки', photos: ['https://picsum.photos/id/125/800/600', 'https://picsum.photos/id/126/800/600', 'https://picsum.photos/id/127/800/600'] },
+      garage1: { title: 'Гараж 1', photos: ['https://picsum.photos/id/128/800/600', 'https://picsum.photos/id/129/800/600', 'https://picsum.photos/id/130/800/600', 'https://picsum.photos/id/131/800/600'] },
+      garage2: { title: 'Гараж 2', photos: ['https://picsum.photos/id/132/800/600', 'https://picsum.photos/id/133/800/600', 'https://picsum.photos/id/134/800/600', 'https://picsum.photos/id/135/800/600', 'https://picsum.photos/id/136/800/600'] },
+      banya: { title: 'Баня', photos: ['https://picsum.photos/id/137/800/600', 'https://picsum.photos/id/138/800/600', 'https://picsum.photos/id/139/800/600', 'https://picsum.photos/id/140/800/600', 'https://picsum.photos/id/141/800/600', 'https://picsum.photos/id/142/800/600'] },
+      living_garage: { title: 'Жилая комната над гаражом 1', photos: ['https://picsum.photos/id/143/800/600', 'https://picsum.photos/id/144/800/600', 'https://picsum.photos/id/145/800/600', 'https://picsum.photos/id/146/800/600', 'https://picsum.photos/id/147/800/600', 'https://picsum.photos/id/148/800/600'] }
+    };
 
-      function setActiveMainTab(tabId) {
-        tabButtons.forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.dataset.tab === tabId) btn.classList.add('active');
-        });
-        tabContents.forEach(tc => tc.classList.remove('active'));
-        const activeTab = document.getElementById(tabId);
-        if (activeTab) activeTab.classList.add('active');
+    // DOM elements
+    const tabBtns = document.querySelectorAll('.nav-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const mobileNav = document.getElementById('mobileNav');
+    const burgerBtn = document.getElementById('burgerBtn');
+    const subtabBtns = document.querySelectorAll('.subtab-btn');
+    const galleryGrid = document.getElementById('galleryGrid');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const favBtn = document.getElementById('favBtn');
+    const toast = document.getElementById('toast');
+
+    let currentPhotos = [];
+    let currentIndex = 0;
+    let lastFocusedElement = null;
+
+    // Scroll lock helpers
+    let scrollY = 0;
+    function lockScroll() {
+      scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+      document.body.style.top = `-${scrollY}px`;
+      document.body.classList.add('no-scroll');
+    }
+    function unlockScroll() {
+      document.body.classList.remove('no-scroll');
+      const top = document.body.style.top;
+      document.body.style.top = '';
+      const y = top ? Math.abs(parseInt(top, 10)) : scrollY;
+      window.scrollTo(0, y);
+    }
+
+    // Main tabs
+    function setActiveTab(tabId) {
+      tabBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
+      tabContents.forEach(tc => tc.classList.toggle('active', tc.id === tabId));
+      mobileNav.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+      if (tabId === 'gallery') renderGalleryForActiveSubtab();
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => setActiveTab(e.currentTarget.dataset.tab));
+    });
+
+    // Burger menu
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      burgerBtn.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        const firstBtn = mobileNav.querySelector('.nav-btn');
+        if (firstBtn) firstBtn.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) && !burgerBtn.contains(e.target)) {
         mobileNav.classList.remove('open');
-        if (tabId === 'gallery') renderGalleryForActiveSubtab();
+        burgerBtn.setAttribute('aria-expanded', 'false');
       }
+    });
 
-      tabButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          setActiveMainTab(e.currentTarget.dataset.tab);
-        });
-      });
+    // Gallery rendering
+    function renderGallery(subtabKey) {
+      const data = galleryData[subtabKey];
+      if (!data) {
+        galleryGrid.innerHTML = '<div class="feature-item">Нет фотографий</div>';
+        return;
+      }
+      const photos = data.photos || [];
+      galleryGrid.innerHTML = photos.map((src, idx) => `
+        <div class="gallery-card" role="button" tabindex="0" data-idx="${idx}" data-src="${src}">
+          <img src="${src}" alt="${data.title} — фото ${idx+1}" loading="lazy" onerror="this.src='https://picsum.photos/id/1/400/300'">
+          <div class="gallery-caption">${data.title} • фото ${idx+1}</div>
+        </div>
+      `).join('');
 
-      burgerBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+      galleryGrid.onclick = (e) => {
+        const card = e.target.closest('.gallery-card');
+        if (!card) return;
+        const idx = parseInt(card.dataset.idx, 10);
+        if (!isNaN(idx)) openLightbox(photos, idx, card);
+      };
+      galleryGrid.onkeydown = (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const card = e.target.closest('.gallery-card');
+        if (!card) return;
+        e.preventDefault();
+        const idx = parseInt(card.dataset.idx, 10);
+        if (!isNaN(idx)) openLightbox(photos, idx, card);
+      };
+    }
 
-      document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && !burgerBtn.contains(e.target)) {
-          mobileNav.classList.remove('open');
+    function renderGalleryForActiveSubtab() {
+      const active = document.querySelector('.subtab-btn.active');
+      if (active) renderGallery(active.dataset.subtab);
+    }
+
+    function setActiveSubtab(key) {
+      subtabBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.subtab === key));
+      renderGallery(key);
+    }
+    subtabBtns.forEach(btn => btn.addEventListener('click', (e) => setActiveSubtab(e.currentTarget.dataset.subtab)));
+
+    // Lightbox logic with focus return
+    function openLightbox(photosArray, index, triggeredElement) {
+      if (!photosArray || photosArray.length === 0) return;
+      currentPhotos = photosArray;
+      currentIndex = index;
+      lastFocusedElement = triggeredElement;
+      updateLightboxImage();
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      lockScroll();
+      lightboxClose.focus();
+    }
+
+    function updateLightboxImage() {
+      if (!currentPhotos.length) return;
+      const src = currentPhotos[currentIndex];
+      if (!src) return;
+      lightboxImg.style.opacity = '0';
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        lightboxImg.src = src;
+        lightboxImg.style.opacity = '1';
+      };
+      tempImg.onerror = () => {
+        lightboxImg.src = 'https://picsum.photos/id/1/800/600';
+        lightboxImg.style.opacity = '1';
+      };
+      tempImg.src = src;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      unlockScroll();
+      lightboxImg.src = '';
+      if (lastFocusedElement && lastFocusedElement.focus) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
+    }
+
+    function showNext() {
+      if (!currentPhotos.length) return;
+      currentIndex = (currentIndex + 1) % currentPhotos.length;
+      updateLightboxImage();
+    }
+    function showPrev() {
+      if (!currentPhotos.length) return;
+      currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+      updateLightboxImage();
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+
+    // Favorites + toast
+    function showToastMessage(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimeout);
+      window.toastTimeout = setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+    async function addToFavorites() {
+      const url = window.location.href;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(url);
+          showToastMessage('Ссылка скопирована. Нажмите Ctrl+D (Cmd+D), чтобы добавить в закладки.');
+        } else {
+          const textarea = document.createElement('textarea');
+          textarea.value = url;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          showToastMessage('Ссылка скопирована. Нажмите Ctrl+D (Cmd+D), чтобы добавить в закладки.');
         }
-      });
-
-      // --- Галерея ---
-      const galleryData = {
-        hall: { title: 'Зал', photos: ['hall1-1.jpg', 'hall1-2.jpg'] },
-        room1: { title: 'Комната 1', photos: ['room1-1.jpg', 'room1-2.jpg', 'room1-3.jpg'] },
-        room2: { title: 'Комната 2', photos: ['room2-1.jpg', 'room2-2.jpg', 'room2-3.jpg'] },
-        room3: { title: 'Комната 3', photos: ['room3-1.jpg', 'room3-2.jpg', 'room3-3.jpg'] },
-        kitchen: { title: 'Кухня', photos: ['kitchen1-1.jpg', 'kitchen1-2.jpg', 'kitchen1-3.jpg', 'kitchen1-4.jpg'] },
-        bathroom: { title: 'Ванная комната', photos: ['bathroom1-1.jpg', 'bathroom1-2.jpg', 'bathroom1-3.jpg', 'bathroom1-4.jpg'] },
-        warm_hall: { title: 'Тёплые сенки', photos: ['warm_hall1-1.jpg', 'warm_hall1-2.jpg', 'warm_hall1-3.jpg'] },
-        garage1: { title: 'Гараж 1', photos: ['garage1-1.jpg', 'garage1-2.jpg', 'garage1-3.jpg', 'garage1-4.jpg'] },
-        garage2: { title: 'Гараж 2', photos: ['garage2-1.jpg', 'garage2-2.jpg', 'garage2-3.jpg', 'garage2-4.jpg', 'garage2-5.jpg'] },
-        banya: { title: 'Баня', photos: ['banya1-1.jpg', 'banya1-2.jpg', 'banya1-3.jpg', 'banya1-4.jpg', 'banya1-5.jpg', 'banya1-6.jpg'] },
-        living_garage: { title: 'Жилая комната над гаражом 1', photos: ['living_garage1-1.jpg', 'living_garage1-2.jpg', 'living_garage1-3.jpg', 'living_garage1-4.jpg', 'living_garage1-5.jpg', 'living_garage1-6.jpg'] }
-      };
-
-      const subtabButtons = document.querySelectorAll('.subtab-btn');
-      const galleryGrid = document.getElementById('galleryGrid');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      const lightboxClose = document.getElementById('lightboxClose');
-      const lightboxPrev = document.getElementById('lightboxPrev');
-      const lightboxNext = document.getElementById('lightboxNext');
-
-      let currentPhotos = [];
-      let currentIndex = 0;
-
-      function openLightbox(photosArray, index) {
-        currentPhotos = photosArray;
-        currentIndex = index;
-        updateLightboxImage();
-        lightbox.classList.add('active');
-        document.body.classList.add('no-scroll');
+      } catch {
+        showToastMessage('Нажмите Ctrl+D (Cmd+D), чтобы добавить страницу в закладки.');
       }
+    }
+    favBtn.addEventListener('click', addToFavorites);
 
-      function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-      }
-
-      function updateLightboxImage() {
-        lightboxImg.src = currentPhotos[currentIndex];
-      }
-
-      function showNext() {
-        if (currentPhotos.length === 0) return;
-        currentIndex = (currentIndex + 1) % currentPhotos.length;
-        updateLightboxImage();
-      }
-
-      function showPrev() {
-        if (currentPhotos.length === 0) return;
-        currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
-        updateLightboxImage();
-      }
-
-      lightboxClose.addEventListener('click', closeLightbox);
-      lightboxPrev.addEventListener('click', showPrev);
-      lightboxNext.addEventListener('click', showNext);
-
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
-      });
-
-      function renderGallery(subtabKey) {
-        const data = galleryData[subtabKey];
-        if (!data) return;
-        const photos = data.photos;
-        let html = '';
-        photos.forEach((src, idx) => {
-          html += `
-            <div class="gallery-card">
-              <img src="${src}" alt="${data.title} фото ${idx+1}" loading="lazy">
-              <div class="gallery-caption">${data.title} • фото ${idx+1}</div>
-            </div>
-          `;
-        });
-        galleryGrid.innerHTML = html;
-
-        document.querySelectorAll('.gallery-card').forEach((card, idx) => {
-          card.addEventListener('click', function(e) {
-            openLightbox(photos, idx);
-          });
-        });
-      }
-
-      function renderGalleryForActiveSubtab() {
-        const activeBtn = document.querySelector('.subtab-btn.active');
-        if (activeBtn) renderGallery(activeBtn.dataset.subtab);
-      }
-
-      function setActiveSubtab(key) {
-        subtabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.subtab === key));
-        renderGallery(key);
-      }
-
-      subtabButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          setActiveSubtab(e.currentTarget.dataset.subtab);
-        });
-      });
-
-      if (document.getElementById('gallery').classList.contains('active')) {
-        renderGalleryForActiveSubtab();
-      }
-
-      // --- Кнопка В избранное ---
-      window.addToFavorites = function() {
-        const url = window.location.href;
-        navigator.clipboard.writeText(url).then(() => {
-          showToast('✅ Ссылка скопирована! Нажмите Ctrl+D (Mac: Cmd+D), чтобы добавить в закладки');
-        }).catch(() => {
-          showToast('⭐ Нажмите Ctrl+D (Mac: Cmd+D), чтобы добавить страницу в закладки');
-        });
-      };
-
-      function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 3500);
-      }
-    })();
-  </script>
+    if (document.getElementById('gallery').classList.contains('active')) renderGalleryForActiveSubtab();
+  })();
+</script>
 </body>
 </html>
